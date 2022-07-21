@@ -21,7 +21,8 @@ module.exports = {
     mode: isProduction ? 'production' : 'development', // 'development',
     devtool: isProduction ? 'nosources-source-map' : 'eval-source-map',
     entry: {
-        main: path.resolve(__dirname, '../src/static/js/index.js')
+        // 这里需要写成对象形式，HtmlWebpackPlugin.chunks才能使用
+        main: path.resolve(__dirname, '../src/static/js/index.jsx')
     },
     output: {
         filename: pathData => {
