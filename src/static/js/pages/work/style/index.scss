@@ -1,7 +1,38 @@
 .lc-work-ground {
+    padding: 0 300px 0 250px;
+    height: 100%;
+    // TODO:以后此处考虑用flex重构
     .lc-work-ground-component-list {
-
+        float: left;
+        width: 250px;
+        height: 100%;
+        margin-left: -250px;
+        .lc-work-ground-component-item {
+            margin: 10px;
+            background-color: #ae9322;
+            display: inline-block;
+            cursor: pointer;
+            padding: 3px 10px;
+            user-select: none;
+        }
     }
-    .lc-work-ground-component-layout {}
-    .lc-work-ground-component-config {}
+    .lc-work-ground-component-layout {
+        height: 100%;
+        border-left: 1px solid #aaa;
+        border-right: 1px solid #aaa;
+    }
+    .lc-work-ground-component-config {
+        float: right;
+        height: 100%;
+        width: 300px;
+        margin-right: -300px;
+    }
+}
+
+.component-shadow-item {
+    position: absolute;
+    width: 50px;
+    height: 20px;
+    background-color: rgba(255, 0, 0, 0.2);
+    pointer-events: none;
 }
