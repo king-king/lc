@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { bubble } from '../../../tools/dom';
 import { add } from '../../../redux/slice/vtree';
 
@@ -39,13 +39,14 @@ function ComListItem({ name }) {
                 if (isInCavans) {
                     // 借助状态管理更新组件树
                     // TODO:此处是初始版本，我们添加的是一个通用的组件，实际上应该是拖拽了哪个就添加哪个
-                    dispatch(add());
+                    dispatch(add({ key: Date.now(), x: ue.pageX, y: ue.pageY }));
                 }
             };
             document.addEventListener('mouseup', mouseUp);
             document.addEventListener('mousemove', move);
         }
         inputEl.current.addEventListener('mousedown', downMove);
+        // eslint-disable-next-line
     }, []);
     return (
         <div ref={inputEl} className='lc-work-ground-component-item'>{name}</div>

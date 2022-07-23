@@ -17,9 +17,11 @@
         }
     }
     .lc-work-ground-component-canvas {
+        position: relative;
         height: 100%;
         border-left: 1px solid #aaa;
         border-right: 1px solid #aaa;
+
     }
     .lc-work-ground-component-config {
         float: right;
