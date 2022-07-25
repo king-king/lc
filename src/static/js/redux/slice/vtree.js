@@ -11,7 +11,7 @@ export const counterSlice = createSlice({
             // TODO:具体的添加算法还待完善
             state.value.push(action.payload);
         },
-        dele: state => {
+        remove: state => {
         },
         edit: (state, action) => {
         },

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { bubble } from '../../../tools/dom';
+import { isInCavans } from '../../../tools/dom';
 import { add } from '../../../redux/slice/vtree';
 
 function ComListItem({ name }) {
@@ -18,6 +18,7 @@ function ComListItem({ name }) {
             shadow.style.setProperty('left', `${x}px`);
             shadow.style.setProperty('top', `${y}px`);
             function move(me) {
+                // 监听移动
                 x = me.pageX - 25;
                 y = me.pageY - 10;
                 shadow.style.setProperty('left', `${x}px`);
@@ -28,15 +29,7 @@ function ComListItem({ name }) {
                 document.removeEventListener('mouseup', mouseUp);
                 document.body.removeChild(shadow);
                 // 只能落在画布的范围内
-                let isInCavans = false;
-                bubble(ue.target, dom => {
-                    if (dom.dataset.id === 'lc-work-ground-component-canvas') {
-                        isInCavans = true;
-                        return true;
-                    }
-                    return false;
-                });
-                if (isInCavans) {
+                if (isInCavans(ue.target)) {
                     // 借助状态管理更新组件树
                     // TODO:此处是初始版本，我们添加的是一个通用的组件，实际上应该是拖拽了哪个就添加哪个
                     dispatch(add({ key: Date.now(), x: ue.pageX, y: ue.pageY }));
