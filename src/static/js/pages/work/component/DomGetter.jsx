@@ -11,15 +11,17 @@ class DomGetter extends React.Component {
         return true;
     }
     render() {
+        const Com = this.props.component;
         return (
-            <>
-                {this.props.component}
-            </>
+            <Com {...this.props.config}>
+                {this.props.children}
+            </Com>
         );
     }
 }
 DomGetter.propTypes = {
     onReady: PropTypes.func.isRequired,
-    component: PropTypes.node.isRequired
+    config: PropTypes.object.isRequired,
+    component: PropTypes.elementType.isRequired
 };
 export default DomGetter;

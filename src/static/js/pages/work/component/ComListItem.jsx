@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { isInCavans } from '../../../tools/dom';
+import { isInCavans, getWidgetUUID } from '../../../tools/dom';
 import { add } from '../../../redux/slice/vtree';
 import { melon } from '../../../lib/melon';
 
@@ -26,15 +26,15 @@ function ComListItem({ widget }) {
                 shadow.style.setProperty('top', `${y}px`);
             }
             const mouseUp = ue => {
+                console.log(ue.target);
                 document.removeEventListener('mousemove', move);
                 document.removeEventListener('mouseup', mouseUp);
                 document.body.removeChild(shadow);
                 // 只能落在画布的范围内
                 if (isInCavans(ue.target)) {
-                    // 借助状态管理更新组件树
-                    // TODO:此处是初始版本，我们添加的是一个通用的组件，实际上应该是拖拽了哪个就添加哪个
+                    const parentUUID = getWidgetUUID(ue.target);
                     dispatch(add(melon({
-                        x: ue.pageX, y: ue.pageY, widget
+                        x: ue.pageX, y: ue.pageY, widget, parentUUID
                     })));
                 }
             };

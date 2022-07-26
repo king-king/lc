@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { visitTree } from '../../tools/visit';
 
 export const counterSlice = createSlice({
     // name影响的是action.type的取值
@@ -8,8 +9,23 @@ export const counterSlice = createSlice({
     },
     reducers: {
         add: (state, action) => {
-            // TODO:具体的添加算法还待完善
-            state.value.push(action.payload);
+            const parentUUID = action.payload.parentUUID;
+            if (parentUUID) {
+                // 如果有父元素就添加到父元素节点上
+                visitTree(state.value, node => {
+                    if (node.uuid === parentUUID) {
+                        if (node?.children?.length) {
+                            node.children.push(action.payload);
+                        } else {
+                            node.children = [action.payload];
+                        }
+                        return true;
+                    }
+                    return false;
+                });
+            } else {
+                state.value.push(action.payload);
+            }
         },
         remove: state => {
         },
