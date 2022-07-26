@@ -10,7 +10,7 @@ function Work() {
     return (
         <div className='lc-work-ground'>
             <div className='lc-work-ground-component-list' data-id='lc-work-ground-component-list'>
-                {list.map(component => <ComListItem key={component.name} name={component.name} />)}
+                {list.map(widget => <ComListItem key={widget.name} widget={{ ...widget }} />)}
             </div>
             <div className='lc-work-ground-component-config' data-id='lc-work-ground-component-config'>
                 {count.length}

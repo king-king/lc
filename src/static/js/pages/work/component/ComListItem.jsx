@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { isInCavans } from '../../../tools/dom';
 import { add } from '../../../redux/slice/vtree';
 
-function ComListItem({ name }) {
+function ComListItem({ widget }) {
     const inputEl = useRef(null);
     const dispatch = useDispatch();
     useEffect(() => {
@@ -32,7 +32,9 @@ function ComListItem({ name }) {
                 if (isInCavans(ue.target)) {
                     // 借助状态管理更新组件树
                     // TODO:此处是初始版本，我们添加的是一个通用的组件，实际上应该是拖拽了哪个就添加哪个
-                    dispatch(add({ key: Date.now(), x: ue.pageX, y: ue.pageY }));
+                    dispatch(add({
+                        key: Date.now(), x: ue.pageX, y: ue.pageY, widget
+                    }));
                 }
             };
             document.addEventListener('mouseup', mouseUp);
@@ -42,12 +44,13 @@ function ComListItem({ name }) {
         // eslint-disable-next-line
     }, []);
     return (
-        <div ref={inputEl} className='lc-work-ground-component-item'>{name}</div>
+        <div ref={inputEl} className='lc-work-ground-component-item'>{widget.name}</div>
     );
 }
 
 ComListItem.propTypes = {
-    name: PropTypes.string.isRequired
+    // eslint-disable-next-line
+    widget: PropTypes.object.isRequired
 };
 
 export default React.memo(ComListItem);

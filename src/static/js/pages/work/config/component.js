@@ -1,9 +1,12 @@
+import Inner from '../../../widget/Inner';
+import Out from '../../../widget/Out';
+
 export const list = [
     {
-        name: '树'
+        name: '内框',
+        component: Inner
     }, {
-        name: '下拉框'
-    }, {
-        name: '单选框'
+        name: '定位',
+        component: Out
     }
 ];
