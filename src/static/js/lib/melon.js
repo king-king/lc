@@ -7,8 +7,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const melon = ({ x, y, widget }) => {
     // 生成一个虚拟节点
-    const key = uuidv4();
+    const uuid = uuidv4();
     return {
-        x, y, widget, key
+        x, y, widget, uuid
     };
 };
