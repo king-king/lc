@@ -11,7 +11,7 @@ function Canvas() {
             }) => {
                 const config = {
                     key,
-                    x: x - 250,
+                    x,
                     y
                 };
                 const Component = widget.component;

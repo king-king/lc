@@ -5,10 +5,10 @@
 
 import { v4 as uuidv4 } from 'uuid';
 
-export const melon = ({ x, y, component }) => {
+export const melon = ({ x, y, widget }) => {
     // 生成一个虚拟节点
-    const uuid = uuidv4();
+    const key = uuidv4();
     return {
-        x, y, component, uuid
+        x, y, widget, key
     };
 };

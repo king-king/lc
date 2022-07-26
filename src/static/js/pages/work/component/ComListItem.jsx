@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { isInCavans } from '../../../tools/dom';
 import { add } from '../../../redux/slice/vtree';
+import { melon } from '../../../lib/melon';
 
 function ComListItem({ widget }) {
     const inputEl = useRef(null);
@@ -32,9 +33,9 @@ function ComListItem({ widget }) {
                 if (isInCavans(ue.target)) {
                     // 借助状态管理更新组件树
                     // TODO:此处是初始版本，我们添加的是一个通用的组件，实际上应该是拖拽了哪个就添加哪个
-                    dispatch(add({
-                        key: Date.now(), x: ue.pageX, y: ue.pageY, widget
-                    }));
+                    dispatch(add(melon({
+                        x: ue.pageX, y: ue.pageY, widget
+                    })));
                 }
             };
             document.addEventListener('mouseup', mouseUp);
