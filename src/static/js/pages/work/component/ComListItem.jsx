@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { isInCavans, getWidgetUUID } from '../../../tools/dom';
 import { add } from '../../../redux/slice/vtree';
-import { melon } from '../../../lib/melon';
+import { melon } from '../../../tools/melon';
 
 function ComListItem({ widget }) {
     const inputEl = useRef(null);
