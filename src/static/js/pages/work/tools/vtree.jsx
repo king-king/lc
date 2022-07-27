@@ -4,7 +4,7 @@
  */
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { widgetList } from '../../../widget/index';
+import { widgetSet } from '../../../widget/index';
 import DomGetter from '../component/DomGetter';
 
 export const useRenderCanvasContent = () => {
@@ -20,7 +20,7 @@ export const useRenderCanvasContent = () => {
         const onReady = dom => {
             dom.setAttribute('data-lc-widget-uuid', uuid);
         };
-        const component = widgetList[widget.component];
+        const component = widgetSet[widget.component].component;
         let childrenDom = [];
         if (children?.length) {
             childrenDom = render(children);

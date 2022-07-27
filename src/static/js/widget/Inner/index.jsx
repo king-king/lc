@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 
@@ -20,4 +20,9 @@ Inner.propTypes = {
 Inner.defaultProps = {
     children: ''
 };
-export default React.memo(Inner);
+export default {
+    component: React.memo(Inner),
+    plot: {
+        children: true
+    }
+};

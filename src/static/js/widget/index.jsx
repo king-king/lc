@@ -1,4 +1,15 @@
 import Inner from './Inner';
 import Out from './Out';
 
-export const widgetList = { Inner, Out };
+// 实际的组件
+export const widgetSet = { Inner, Out };
+
+export const widgetList = [
+    {
+        name: '卡片',
+        component: 'Out'
+    }, {
+        name: '内框',
+        component: 'Inner'
+    }
+];

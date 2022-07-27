@@ -26,7 +26,6 @@ function ComListItem({ widget }) {
                 shadow.style.setProperty('top', `${y}px`);
             }
             const mouseUp = ue => {
-                console.log(ue.target);
                 document.removeEventListener('mousemove', move);
                 document.removeEventListener('mouseup', mouseUp);
                 document.body.removeChild(shadow);
