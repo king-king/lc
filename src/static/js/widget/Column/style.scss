@@ -1,0 +1,12 @@
+.column-com {
+    box-sizing: border-box;
+    height: 200px;
+    padding: 10px;
+    margin: 0 0 10px 0;
+    background-color: black;
+    .column-left, .column-right {
+        width: 50%;
+        height: 100%;
+        display: inline-block;
+    }
+}

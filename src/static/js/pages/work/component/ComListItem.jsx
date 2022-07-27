@@ -31,10 +31,13 @@ function ComListItem({ widget }) {
                 document.body.removeChild(shadow);
                 // 只能落在画布的范围内
                 if (isInCavans(ue.target)) {
-                    const parentUUID = getWidgetUUID(ue.target);
-                    dispatch(add(melon({
-                        x: ue.pageX, y: ue.pageY, widget, parentUUID
-                    })));
+                    const { parentUUID, targetPlot } = getWidgetUUID(ue.target);
+                    dispatch(add({
+                        ...melon({
+                            x: ue.pageX, y: ue.pageY, widget, parentUUID
+                        }),
+                        targetPlot
+                    }));
                 }
             };
             document.addEventListener('mouseup', mouseUp);

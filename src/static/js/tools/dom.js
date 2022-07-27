@@ -18,15 +18,21 @@ export const isInCavans = target => {
     return result;
 };
 
-// 获取到路径树上第一个组件
+// 必须是落在一个槽位上
 export const getWidgetUUID = target => {
-    let result;
+    let result = {};
+    // {parantUUID,plot};
     bubble(target, dom => {
         if (dom.dataset.id === 'lc-work-ground-component-canvas') {
+            // 落在画布上，不需要parantUUID和plot
             return true;
         }
-        if (dom.dataset.lcWidgetUuid) {
-            result = dom.dataset.lcWidgetUuid;
+        if (dom.dataset.lcParentWrapperUuid && dom.dataset.lcPlot) {
+            // 落在槽位上
+            result = {
+                parentUUID: dom.dataset.lcParentWrapperUuid,
+                targetPlot: dom.dataset.lcPlot
+            };
             return true;
         }
         return false;

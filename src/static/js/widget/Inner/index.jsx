@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
+import { blockPlot } from '../../tools/widget';
 
 function Inner({ children }) {
     const r = Math.floor(Math.random() * 255);
@@ -22,7 +23,7 @@ Inner.defaultProps = {
 };
 export default {
     component: React.memo(Inner),
-    plot: {
-        children: true
+    plots: {
+        children: blockPlot
     }
 };

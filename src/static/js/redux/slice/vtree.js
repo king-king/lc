@@ -9,15 +9,15 @@ export const counterSlice = createSlice({
     },
     reducers: {
         add: (state, action) => {
-            const parentUUID = action.payload.parentUUID;
+            const { parentUUID, targetPlot } = action.payload;
             if (parentUUID) {
                 // 如果有父元素就添加到父元素节点上
                 visitTree(state.value, node => {
                     if (node.uuid === parentUUID) {
-                        if (node?.children?.length) {
-                            node.children.push(action.payload);
+                        if (node?.[targetPlot]?.length) {
+                            node[targetPlot].push(action.payload);
                         } else {
-                            node.children = [action.payload];
+                            node[targetPlot] = [action.payload];
                         }
                         return true;
                     }
