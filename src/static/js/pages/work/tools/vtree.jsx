@@ -27,7 +27,7 @@ export const useRenderCanvasContent = () => {
             Object.keys(plots).forEach(plot => {
                 if (other[plot]) {
                     // 如果此处槽位已经有了内容，则填充真实的内容
-                    config[plot] = render(other.plot);
+                    config[plot] = render(other[plot]);
                 } else {
                     // 如果没有内容，填充占位符
                     config[plot] = plots[plot](uuid, plot);
