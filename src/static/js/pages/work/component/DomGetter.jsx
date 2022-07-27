@@ -13,9 +13,7 @@ class DomGetter extends React.Component {
     render() {
         const Com = this.props.component;
         return (
-            <Com {...this.props.config}>
-                {this.props.children}
-            </Com>
+            <Com {...this.props.config} />
         );
     }
 }
