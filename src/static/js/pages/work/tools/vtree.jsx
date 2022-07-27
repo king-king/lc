@@ -9,7 +9,6 @@ import DomGetter from '../component/DomGetter';
 
 export const useRenderCanvasContent = () => {
     const vtree = useSelector(state => state.vtree.value);
-    console.log(vtree);
     const render = nodes => nodes.map(({
         x, y, uuid, widget, ...other
     }) => {
