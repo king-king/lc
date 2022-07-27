@@ -3,10 +3,12 @@
  * Copyright (c) 2022
  */
 
-export const visitTree = (tree, func) => {
+export const visitVTree = (tree, func) => {
     tree.forEach(node => {
         if (!func(node)) {
-            node?.children?.length && visitTree(node.children, func);
+            node?.widget?.plots?.forEach(plot => {
+                node?.[plot]?.length && visitVTree(node[plot], func);
+            });
         }
     });
 };

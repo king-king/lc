@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { visitTree } from '../../tools/visit';
+import { visitVTree } from '../../tools/visit';
 
 export const counterSlice = createSlice({
     // name影响的是action.type的取值
@@ -12,7 +12,8 @@ export const counterSlice = createSlice({
             const { parentUUID, targetPlot } = action.payload;
             if (parentUUID) {
                 // 如果有父元素就添加到父元素节点上
-                visitTree(state.value, node => {
+                console.log(state.value);
+                visitVTree(state.value, node => {
                     if (node.uuid === parentUUID) {
                         if (node?.[targetPlot]?.length) {
                             node[targetPlot].push(action.payload);

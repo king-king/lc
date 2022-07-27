@@ -7,9 +7,11 @@ export const widgetSet = { Inner, Column };
 export const widgetList = [
     {
         name: '两列布局',
-        component: 'Column'
+        component: 'Column',
+        plots: Object.keys(Column.plots)
     }, {
         name: '内框',
-        component: 'Inner'
+        component: 'Inner',
+        plots: Object.keys(Inner.plots)
     }
 ];
