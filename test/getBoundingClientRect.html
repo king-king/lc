@@ -1,0 +1,71 @@
+<html>
+
+<head>
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        .wrapper {
+            border: 1px solid black;
+            height: 400px;
+            width: 400px;
+            overflow: auto;
+            position: relative;
+            left: 100px;
+            margin-top: 100px;
+        }
+        .target {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: relative;
+            top: 200px;
+            left: 200px;
+        }
+        .bottom {
+            height: 1500px;
+        }
+        .result {
+            pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="target"></div>
+        <div class="bottom"></div>
+    </div>
+    <div class="result">
+
+    </div>
+    <script>
+        const target = document.querySelector('.target');
+        const result = document.querySelector('.result');
+        document.querySelector('.wrapper').addEventListener('scroll', function() {
+            const {
+                left,
+                top,
+                width,
+                height
+            } = target.getBoundingClientRect();
+            result.innerHTML=`
+                <div>left：${left}</div>
+                <div>top：${top}</div>
+                <div>width：${width}</div>
+                <div>height：${height}</div>
+            `
+
+        })
+    </script>
+</body>
+
+</html>
