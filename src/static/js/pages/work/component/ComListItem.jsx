@@ -24,6 +24,7 @@ function ComListItem({ widget }) {
                 y = me.pageY - 10;
                 shadow.style.setProperty('left', `${x}px`);
                 shadow.style.setProperty('top', `${y}px`);
+                // 需要将可以"落子"的地方高亮
             }
             const mouseUp = ue => {
                 document.removeEventListener('mousemove', move);
