@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { isInCavans, getWidgetUUID, element } from '../../../tools/dom';
+import {
+    isInCavans, getWidgetUUID, element, highlightDropshadow
+} from '../../../tools/dom';
 import { add } from '../../../redux/slice/vtree';
 import { melon } from '../../../tools/melon';
 
@@ -18,10 +20,12 @@ function ComListItem({ widget }) {
             document.body.appendChild(shadow);
             shadow.style.setProperty('left', `${x}px`);
             shadow.style.setProperty('top', `${y}px`);
-            // 创建槽位的影子dom
-            const plotShadow = element('div', {
-                position: 'absoulte',
-                backgroundColor: 'rgba(255,0,0,0.2)'
+            // 创建可落子的影子dom
+            const dropShadow = element('div', {
+                css: {
+                    position: 'absolute',
+                    'background-color': 'rgba(255,0,0,0.2)'
+                }
             });
             const plotCanvas = element('div', {
                 className: 'lc-plot-canvas',
@@ -33,7 +37,7 @@ function ComListItem({ widget }) {
                     bottom: 0,
                     right: 0
                 },
-                children: [plotShadow.el]
+                children: [dropShadow.el]
             }, document.body);
             function move(me) {
                 // 监听移动
@@ -42,6 +46,7 @@ function ComListItem({ widget }) {
                 shadow.style.setProperty('left', `${x}px`);
                 shadow.style.setProperty('top', `${y}px`);
                 // 需要将可以"落子"的地方高亮
+                highlightDropshadow(dropShadow.el, me);
             }
             const mouseUp = ue => {
                 document.removeEventListener('mousemove', move);

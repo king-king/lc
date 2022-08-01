@@ -5,7 +5,7 @@
 
 import {
     LC_WORK_GROUND_COMPONENT_CANVAS, DATA_LC_PLOT_KEY,
-    DATA_LC_PLOT_WIDGET_UUID_KEY
+    DATA_LC_PLOT_WIDGET_UUID_KEY, DATA_LC_WIDGET_UUID_KEY
 } from '../config/index';
 
 export const bubble = (dom, func) => {
@@ -29,16 +29,24 @@ export const isInCavans = target => {
 };
 
 // 获取plot的dom元素
-const getPlotEl = target => {
-    let result;
+const getWidgetOrPlot = target => {
+    const result = {
+        el: undefined,
+        type: '' // plot/widget
+    };
     bubble(target, dom => {
         if (dom.dataset.id === 'lc-work-ground-component-canvas') {
             // 只上溯到canvas画布
             return true;
         }
-        if (dom.dataset.lcParentWrapperUuid && dom.dataset.lcPlot) {
+        if (dom.dataset[DATA_LC_PLOT_WIDGET_UUID_KEY] && dom.dataset[DATA_LC_PLOT_KEY]) {
             // 落在槽位上
-            result = dom;
+            result.el = dom;
+            result.type = 'plot';
+            return true;
+        } if (dom.dataset[DATA_LC_WIDGET_UUID_KEY]) {
+            result.el = dom;
+            result.type = 'widget';
             return true;
         }
         return false;
@@ -46,13 +54,13 @@ const getPlotEl = target => {
     return result;
 };
 
-export const getPlotElBoundingClientRect = target => {
-    const plot = getPlotEl(target);
-    if (plot) {
-        return plot.getBoundingClientRect();
-    }
-    return {};
-};
+// export const getPlotElBoundingClientRect = target => {
+//     const plot = getPlotEl(target);
+//     if (plot) {
+//         return plot.getBoundingClientRect();
+//     }
+//     return {};
+// };
 
 // 必须是落在一个槽位上
 export const getWidgetUUID = target => {
@@ -76,14 +84,18 @@ export const getWidgetUUID = target => {
     return result;
 };
 
+const css = (el, style) => {
+    Object.keys(style).forEach(cssKey => {
+        el.style.setProperty(cssKey, style[cssKey]);
+    });
+};
+
 export const element = (tag, props, parent) => {
     let el = document.createElement(tag);
     parent && parent.appendChild(el);
     Object.keys(props).forEach(key => {
         if (key === 'css') {
-            Object.keys(props[key]).forEach(cssKey => {
-                el.style.setProperty(cssKey, props[key][cssKey]);
-            });
+            css(el, props.css);
         } else if (key === 'children') {
             props[key]?.forEach(child => {
                 el.appendChild(child);
@@ -104,4 +116,30 @@ export const element = (tag, props, parent) => {
             el = undefined;
         }
     };
+};
+
+// 移动的时候高亮影子dom，帮助更好的拖拽
+export const highlightDropshadow = (dropEl, event) => {
+    const targetObj = getWidgetOrPlot(event.target);
+    // 获取到位置信息
+    if (targetObj.el) {
+        const {
+            left, top, width, height
+        } = targetObj.el.getBoundingClientRect();
+        css(dropEl, {
+            left: `${left}px`,
+            top: `${top}px`,
+            width: `${width}px`,
+            height: `${height}px`,
+            border: '1px solid rgb(0, 115, 230)'
+        });
+    } else {
+        css(dropEl, {
+            left: 0,
+            top: 0,
+            width: 0,
+            height: 0,
+            border: 'none'
+        });
+    }
 };
