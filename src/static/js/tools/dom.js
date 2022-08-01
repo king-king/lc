@@ -126,12 +126,29 @@ export const highlightDropshadow = (dropEl, event) => {
         const {
             left, top, width, height
         } = targetObj.el.getBoundingClientRect();
+        // 判断落点的位置
+        const { clientX, clientY } = event;
+        let borderKey = '';
+        const borderKeyValue = '3px solid red';
+        if (targetObj.type === 'widget') {
+            // 如果是组件，需要判断是放在组件前还是组件后
+            if (clientX - left < width * 0.3) {
+                borderKey = 'border-left';
+            } else if (clientX - left > width * 0.7) {
+                borderKey = 'border-right';
+            } else if (clientY - top < height * 0.5) {
+                borderKey = 'border-top';
+            } else if (clientY - top > height * 0.5) {
+                borderKey = 'border-bottom';
+            }
+        }
         css(dropEl, {
             left: `${left}px`,
             top: `${top}px`,
             width: `${width}px`,
             height: `${height}px`,
-            border: '1px solid rgb(0, 115, 230)'
+            border: '1px solid rgb(0, 115, 230)',
+            [borderKey]: borderKeyValue
         });
     } else {
         css(dropEl, {
