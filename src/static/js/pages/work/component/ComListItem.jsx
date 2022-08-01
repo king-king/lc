@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { isInCavans, getWidgetUUID } from '../../../tools/dom';
+import { isInCavans, getWidgetUUID, element } from '../../../tools/dom';
 import { add } from '../../../redux/slice/vtree';
 import { melon } from '../../../tools/melon';
 
@@ -18,6 +18,23 @@ function ComListItem({ widget }) {
             document.body.appendChild(shadow);
             shadow.style.setProperty('left', `${x}px`);
             shadow.style.setProperty('top', `${y}px`);
+            // 创建槽位的影子dom
+            const plotShadow = element('div', {
+                position: 'absoulte',
+                backgroundColor: 'rgba(255,0,0,0.2)'
+            });
+            const plotCanvas = element('div', {
+                className: 'lc-plot-canvas',
+                css: {
+                    'pointer-events': 'none',
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    bottom: 0,
+                    right: 0
+                },
+                children: [plotShadow.el]
+            }, document.body);
             function move(me) {
                 // 监听移动
                 x = me.pageX - 25;
@@ -40,6 +57,7 @@ function ComListItem({ widget }) {
                         targetPlot
                     }));
                 }
+                plotCanvas.remove();
             };
             document.addEventListener('mouseup', mouseUp);
             document.addEventListener('mousemove', move);
