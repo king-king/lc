@@ -1,8 +1,9 @@
 import Inner from './Inner';
 import Column from './Column';
+import Card from './Card';
 
 // 实际的组件
-export const widgetSet = { Inner, Column };
+export const widgetSet = { Inner, Column, Card };
 
 export const widgetList = [
     {
@@ -13,5 +14,9 @@ export const widgetList = [
         name: '内框',
         component: 'Inner',
         plots: Object.keys(Inner.plots)
+    }, {
+        name: '卡片',
+        component: 'Card',
+        plots: Object.keys(Card.plots)
     }
 ];
