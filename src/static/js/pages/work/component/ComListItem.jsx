@@ -2,10 +2,11 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import {
-    isInCavans, getWidgetUUID, element, highlightDropshadow
+    isInCavans, getWidgetUUID, element, highlightDropshadow, getWidgetOrPlot, getPositionInfo
 } from '../../../tools/dom';
 import { add } from '../../../redux/slice/vtree';
 import { melon } from '../../../tools/melon';
+import { DATA_LC_WIDGET_UUID_KEY, DATA_LC_PLOT_KEY, DATA_LC_PLOT_WIDGET_UUID_KEY } from '../../../config/index';
 
 function ComListItem({ widget }) {
     const inputEl = useRef(null);
@@ -54,13 +55,27 @@ function ComListItem({ widget }) {
                 document.body.removeChild(shadow);
                 // 只能落在画布的范围内
                 if (isInCavans(ue.target)) {
-                    const { parentUUID, targetPlot } = getWidgetUUID(ue.target);
-                    dispatch(add({
-                        ...melon({
-                            x: ue.pageX, y: ue.pageY, widget, parentUUID
-                        }),
-                        targetPlot
-                    }));
+                    // const { parentUUID, targetPlot } = getWidgetUUID(ue.target);
+                    // 获取当前落点位置
+                    const { el, type } = getWidgetOrPlot(ue.target);
+                    const payload = { type, melon: melon({ x: ue.pageX, y: ue.pageY, widget }) };
+                    if (type === 'widget') {
+                        // 落在了组件上
+                        // 需要指明组件uuid
+                        const {
+                            left, top, width, height
+                        } = el.getBoundingClientRect();
+                        payload.widgetUUID = el.dataset[DATA_LC_WIDGET_UUID_KEY];
+                        payload.position = getPositionInfo(ue.target.clientX, ue.target.clientY, left, top, width, height).position;
+                    } else if (type === 'plot') {
+                        // 落在了槽位上
+                        payload.parentUUID = el.dataset[DATA_LC_PLOT_WIDGET_UUID_KEY];
+                        payload.targetPlot = el.dataset[DATA_LC_PLOT_KEY];
+                    } else {
+                        // 落在了画布上
+                        payload.type = 'canvas';
+                    }
+                    dispatch(add(payload));
                 }
                 plotCanvas.remove();
             };

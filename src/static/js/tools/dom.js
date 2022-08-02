@@ -29,7 +29,7 @@ export const isInCavans = target => {
 };
 
 // 获取plot的dom元素
-const getWidgetOrPlot = target => {
+export const getWidgetOrPlot = target => {
     const result = {
         el: undefined,
         type: '' // plot/widget
@@ -118,6 +118,27 @@ export const element = (tag, props, parent) => {
     };
 };
 
+export const getPositionInfo = (clientX, clientY, left, top, width, height) => {
+    const result = {
+        type: '',
+        position: ''
+    };
+    if (clientX - left < width * 0.3) {
+        result.type = 'left';
+        result.position = 'before';
+    } else if (clientX - left > width * 0.7) {
+        result.type = 'right';
+        result.position = 'after';
+    } else if (clientY - top < height * 0.5) {
+        result.type = 'top';
+        result.position = 'before';
+    } else if (clientY - top > height * 0.5) {
+        result.type = 'bottom';
+        result.position = 'after';
+    }
+    return result;
+};
+
 // 移动的时候高亮影子dom，帮助更好的拖拽
 export const highlightDropshadow = (dropEl, event) => {
     const targetObj = getWidgetOrPlot(event.target);
@@ -132,15 +153,7 @@ export const highlightDropshadow = (dropEl, event) => {
         const borderKeyValue = '3px solid red';
         if (targetObj.type === 'widget') {
             // 如果是组件，需要判断是放在组件前还是组件后
-            if (clientX - left < width * 0.3) {
-                borderKey = 'border-left';
-            } else if (clientX - left > width * 0.7) {
-                borderKey = 'border-right';
-            } else if (clientY - top < height * 0.5) {
-                borderKey = 'border-top';
-            } else if (clientY - top > height * 0.5) {
-                borderKey = 'border-bottom';
-            }
+            borderKey = `border-${getPositionInfo(clientX, clientY, left, top, width, height).type}`;
         }
         css(dropEl, {
             left: `${left}px`,

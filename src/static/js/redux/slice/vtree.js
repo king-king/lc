@@ -9,23 +9,32 @@ export const counterSlice = createSlice({
     },
     reducers: {
         add: (state, action) => {
-            const { parentUUID, targetPlot } = action.payload;
-            if (parentUUID) {
+            const {
+                melon, type, widgetUUID, position, parentUUID, targetPlot
+            } = action.payload;
+            if (type === 'canvas') {
+                state.value.push(melon);
+            } else if (type === 'widget') {
+                // 落在组件的前后
+                visitVTree(state.value, (node, index, list) => {
+                    if (node.uuid === widgetUUID) {
+
+                    }
+                });
+            } else {
+                // 槽位
                 // 如果有父元素就添加到父元素节点上
-                console.log(state.value);
                 visitVTree(state.value, node => {
                     if (node.uuid === parentUUID) {
                         if (node?.[targetPlot]?.length) {
-                            node[targetPlot].push(action.payload);
+                            node[targetPlot].push(melon);
                         } else {
-                            node[targetPlot] = [action.payload];
+                            node[targetPlot] = [melon];
                         }
                         return true;
                     }
                     return false;
                 });
-            } else {
-                state.value.push(action.payload);
             }
         },
         remove: state => {
