@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, current } from '@reduxjs/toolkit';
 import { visitVTree, insertArray } from '../../tools/visit';
 
 export const counterSlice = createSlice({
@@ -18,11 +18,12 @@ export const counterSlice = createSlice({
                 // 落在组件的前后
                 visitVTree(state.value, (node, index, list) => {
                     if (node.uuid === widgetUUID) {
-                        insertArray(list, melon, position === 'before' ? index : index + 1);
+                        insertArray(list, position === 'before' ? index : index + 1, melon);
                         return true;
                     }
                     return false;
                 });
+                // console.log(current(state.value));
             } else {
                 // 槽位
                 // 如果有父元素就添加到父元素节点上

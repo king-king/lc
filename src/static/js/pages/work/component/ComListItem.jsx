@@ -66,7 +66,7 @@ function ComListItem({ widget }) {
                             left, top, width, height
                         } = el.getBoundingClientRect();
                         payload.widgetUUID = el.dataset[DATA_LC_WIDGET_UUID_KEY];
-                        payload.position = getPositionInfo(ue.target.clientX, ue.target.clientY, left, top, width, height).position;
+                        payload.position = getPositionInfo(ue.clientX, ue.clientY, left, top, width, height).position;
                     } else if (type === 'plot') {
                         // 落在了槽位上
                         payload.parentUUID = el.dataset[DATA_LC_PLOT_WIDGET_UUID_KEY];

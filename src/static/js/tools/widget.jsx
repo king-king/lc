@@ -7,11 +7,13 @@ import React from 'react';
 import { DATA_LC_PLOT, DATA_LC_PLOT_WIDGET_UUID } from '../config/index';
 
 // plot指的是具体的render props
-export const blockPlot = (parantUUID, plot) => {
+export const blockPlot = (parantUUID, plot, text = '槽位') => {
     const config = {
         [DATA_LC_PLOT]: plot,
         [DATA_LC_PLOT_WIDGET_UUID]: parantUUID,
-        style: { height: '100%' }
+        style: {
+            height: '100%', maxHeight: '50px', color: 'gray', textAlign: 'center'
+        }
     };
-    return <div {...config} />;
+    return <div {...config}>{text}</div>;
 };
