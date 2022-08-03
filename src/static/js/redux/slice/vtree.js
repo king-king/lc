@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { visitVTree } from '../../tools/visit';
+import { visitVTree, insertArray } from '../../tools/visit';
 
 export const counterSlice = createSlice({
     // name影响的是action.type的取值
@@ -18,8 +18,10 @@ export const counterSlice = createSlice({
                 // 落在组件的前后
                 visitVTree(state.value, (node, index, list) => {
                     if (node.uuid === widgetUUID) {
-
+                        insertArray(list, melon, position === 'before' ? index : index + 1);
+                        return true;
                     }
+                    return false;
                 });
             } else {
                 // 槽位
