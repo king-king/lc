@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 
 function Edit() {
     const curUUID = useSelector(state => state.vtree.curUUID);
+    // 根据uuid查询出当前选中的组件的uuid
     return (
         <div>
             {curUUID}
