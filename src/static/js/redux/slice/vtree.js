@@ -5,7 +5,9 @@ export const counterSlice = createSlice({
     // name影响的是action.type的取值
     name: 'vtree',
     initialState: {
-        value: []
+        value: [],
+        // 当前选中的组件uuid
+        curUUID: ''
     },
     reducers: {
         add: (state, action) => {
@@ -44,15 +46,15 @@ export const counterSlice = createSlice({
         },
         edit: (state, action) => {
         },
-        test: (dispatch, state) => {
-            dispatch(this.add());
+        setCurrentWidgetUUID: (state, action) => {
+            state.curUUID = action.payload;
         }
     }
 });
 
 // Action creators are generated for each case reducer function
 export const {
-    add, dele, edit, test
+    add, dele, edit, setCurrentWidgetUUID
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

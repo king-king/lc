@@ -104,12 +104,13 @@ const highlightDom = el => {
     if (el) {
         const highlight = element('div', {
             css: {
+                'box-sizing': 'border-box',
                 position: 'absolute',
                 'background-color': 'rgba(255,0,0,0.2)'
             }
         });
         widgetHighlight = element('div', {
-            className: 'lc-plot-canvas',
+            className: 'widget-highlight',
             css: {
                 'pointer-events': 'none',
                 position: 'fixed',
