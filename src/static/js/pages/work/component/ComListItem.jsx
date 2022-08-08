@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import {
-    isInCavans, getWidgetUUID, element, highlightDropshadow, getWidgetOrPlot, getPositionInfo
+    isInCavans, element, highlightDropshadow, getWidgetOrPlot, getPositionInfo
 } from '../../../tools/dom';
 import { add } from '../../../redux/slice/vtree';
 import { melon } from '../../../tools/melon';
@@ -28,7 +28,8 @@ function ComListItem({ widget }) {
                     'background-color': 'rgba(255,0,0,0.2)'
                 }
             });
-            const plotCanvas = element('div', {
+            // 用于高亮的画布
+            const highlightCanvas = element('div', {
                 className: 'lc-plot-canvas',
                 css: {
                     'pointer-events': 'none',
@@ -55,7 +56,6 @@ function ComListItem({ widget }) {
                 document.body.removeChild(shadow);
                 // 只能落在画布的范围内
                 if (isInCavans(ue.target)) {
-                    // const { parentUUID, targetPlot } = getWidgetUUID(ue.target);
                     // 获取当前落点位置
                     const { el, type } = getWidgetOrPlot(ue.target);
                     const payload = { type, melon: melon({ x: ue.pageX, y: ue.pageY, widget }) };
@@ -77,7 +77,7 @@ function ComListItem({ widget }) {
                     }
                     dispatch(add(payload));
                 }
-                plotCanvas.remove();
+                highlightCanvas.remove();
             };
             document.addEventListener('mouseup', mouseUp);
             document.addEventListener('mousemove', move);

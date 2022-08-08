@@ -54,36 +54,6 @@ export const getWidgetOrPlot = target => {
     return result;
 };
 
-// export const getPlotElBoundingClientRect = target => {
-//     const plot = getPlotEl(target);
-//     if (plot) {
-//         return plot.getBoundingClientRect();
-//     }
-//     return {};
-// };
-
-// 必须是落在一个槽位上
-export const getWidgetUUID = target => {
-    let result = {};
-    // {parantUUID,plot};
-    bubble(target, dom => {
-        if (dom.dataset.id === LC_WORK_GROUND_COMPONENT_CANVAS) {
-            // 落在画布上，不需要parantUUID和plot
-            return true;
-        }
-        if (dom.dataset[DATA_LC_PLOT_WIDGET_UUID_KEY] && dom.dataset[DATA_LC_PLOT_KEY]) {
-            // 落在槽位上
-            result = {
-                parentUUID: dom.dataset[DATA_LC_PLOT_WIDGET_UUID_KEY],
-                targetPlot: dom.dataset[DATA_LC_PLOT_KEY]
-            };
-            return true;
-        }
-        return false;
-    });
-    return result;
-};
-
 const css = (el, style) => {
     Object.keys(style).forEach(cssKey => {
         el.style.setProperty(cssKey, style[cssKey]);
@@ -116,6 +86,72 @@ export const element = (tag, props, parent) => {
             el = undefined;
         }
     };
+};
+
+// export const getPlotElBoundingClientRect = target => {
+//     const plot = getPlotEl(target);
+//     if (plot) {
+//         return plot.getBoundingClientRect();
+//     }
+//     return {};
+// };
+
+// 根据target查询其路径上第一个组件的相关信息，并将组件高亮
+let widgetHighlight;
+const highlightDom = el => {
+    widgetHighlight?.remove();
+    widgetHighlight = null;
+    if (el) {
+        const highlight = element('div', {
+            css: {
+                position: 'absolute',
+                'background-color': 'rgba(255,0,0,0.2)'
+            }
+        });
+        widgetHighlight = element('div', {
+            className: 'lc-plot-canvas',
+            css: {
+                'pointer-events': 'none',
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                bottom: 0,
+                right: 0
+            },
+            children: [highlight.el]
+        }, document.body);
+        const {
+            left, top, width, height
+        } = el.getBoundingClientRect();
+        css(highlight.el, {
+            left: `${left}px`,
+            top: `${top}px`,
+            width: `${width}px`,
+            height: `${height}px`,
+            border: '1px solid rgb(0, 115, 230)'
+        });
+    }
+};
+export const getClickWidget = target => {
+    let result;
+    // {parantUUID,plot};
+    bubble(target, dom => {
+        if (dom.dataset.id === LC_WORK_GROUND_COMPONENT_CANVAS) {
+            // 落在画布上，直接终止
+            return true;
+        }
+        if (dom.dataset[DATA_LC_WIDGET_UUID_KEY]) {
+            // 落在组件上
+            result = {
+                uuid: dom.dataset[DATA_LC_WIDGET_UUID_KEY],
+                el: dom
+            };
+            return true;
+        }
+        return false;
+    });
+    highlightDom(result?.el);
+    return result;
 };
 
 export const getPositionInfo = (clientX, clientY, left, top, width, height) => {
