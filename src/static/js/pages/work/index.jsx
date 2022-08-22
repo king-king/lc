@@ -8,14 +8,17 @@ import './style/index.scss';
 
 function Work() {
     return (
-        <div className='lc-work-ground'>
-            <div className='lc-work-ground-component-list' data-id='lc-work-ground-component-list'>
-                {widgetList.map(widget => <ComListItem key={widget.name} widget={{ ...widget }} />)}
+        <div>
+            <div className='lc-work-header' />
+            <div className='lc-work-ground'>
+                <div className='lc-work-ground-component-list' data-id='lc-work-ground-component-list'>
+                    {widgetList.map(widget => <ComListItem key={widget.name} widget={{ ...widget }} />)}
+                </div>
+                <div className='lc-work-ground-component-config' data-id='lc-work-ground-component-config'>
+                    <Edit />
+                </div>
+                <Canvas />
             </div>
-            <div className='lc-work-ground-component-config' data-id='lc-work-ground-component-config'>
-                <Edit />
-            </div>
-            <Canvas />
         </div>
     );
 }
