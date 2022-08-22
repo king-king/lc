@@ -98,7 +98,7 @@ export const element = (tag, props, parent) => {
 
 // 根据target查询其路径上第一个组件的相关信息，并将组件高亮
 let widgetHighlight;
-const highlightDom = el => {
+export const highlightDom = el => {
     widgetHighlight?.remove();
     widgetHighlight = null;
     if (el) {
@@ -151,7 +151,6 @@ export const getClickWidget = target => {
         }
         return false;
     });
-    highlightDom(result?.el);
     return result;
 };
 
