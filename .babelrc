@@ -4,7 +4,7 @@
             "useBuiltIns": "usage",
             "corejs": {
                 // 指定采用最新版本的core-js
-                "version": "3.20",
+                "version": "3.24",
                 // 支持采用proposals特性
                 "proposals": true
             }
