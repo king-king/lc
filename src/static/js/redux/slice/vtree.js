@@ -40,9 +40,8 @@ export const counterSlice = createSlice({
                     return false;
                 });
             }
-            console.log(current(state.value));
         },
-        delte: (state, action) => {
+        dele: (state, action) => {
             if (state.curUUID === action.payload.uuid) {
                 state.curUUID = undefined;
             }
@@ -55,7 +54,14 @@ export const counterSlice = createSlice({
                 return false;
             });
         },
-        edit: (state, action) => {
+        editProps: (state, action) => {
+            visitVTree(state.value, node => {
+                if (node.uuid === state.curUUID) {
+                    node.widget.props[action.payload.propsName] = action.payload.propsValue;
+                    return true;
+                }
+                return false;
+            });
         },
         setCurrentWidgetUUID: (state, action) => {
             state.curUUID = action.payload;
@@ -65,7 +71,7 @@ export const counterSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const {
-    add, delte, edit, setCurrentWidgetUUID
+    add, dele, editProps, setCurrentWidgetUUID
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

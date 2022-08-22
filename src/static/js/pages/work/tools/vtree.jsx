@@ -15,7 +15,8 @@ export const useRenderCanvasContent = () => {
         const config = {
             key: uuid,
             x,
-            y
+            y,
+            ...widget.props
         };
         const onReady = dom => {
             dom.setAttribute('data-lc-widget-uuid', uuid);
@@ -31,10 +32,6 @@ export const useRenderCanvasContent = () => {
                 config[plot] = plots[plot](uuid, plot);
             }
         });
-        // let childrenDom = [];
-        // if (other.children?.length) {
-        //     childrenDom = render(other.children);
-        // }
         return <DomGetter key={uuid} component={component} config={config} onReady={onReady} />;
     });
     return render(vtree);

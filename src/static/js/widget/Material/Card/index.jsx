@@ -16,7 +16,5 @@ export default {
     plots: {
     },
     // 可以配置的props，用于渲染右侧的编辑栏
-    editProps: {
-
-    }
+    editProps: []
 };

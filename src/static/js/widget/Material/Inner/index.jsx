@@ -1,29 +1,42 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
+import Field from '../../Edit/Field';
 import { blockPlot } from '../../../tools/widget';
 
-function Inner({ children }) {
-    const r = Math.floor(Math.random() * 255);
-    const g = Math.floor(Math.random() * 255);
-    const b = Math.floor(Math.random() * 255);
-    const color = `rgba(${r},${g},${b},1)`;
-    const backgroundColor = useRef(color);
-
+function Inner({ children, bgColor }) {
     return (
-        <div className='inner-com' style={{ backgroundColor: backgroundColor.current }}>{children}</div>
+        <div className='inner-com' style={{ backgroundColor: bgColor }}>{children}</div>
     );
 }
 
 Inner.propTypes = {
+    bgColor: PropTypes.string,
     children: PropTypes.node
 };
 Inner.defaultProps = {
+    bgColor: 'red',
     children: ''
 };
 export default {
     component: React.memo(Inner),
     plots: {
         children: blockPlot
-    }
+    },
+    editProps: [
+        <Field
+            name='bgColor'
+            type='select'
+            label='颜色'
+            data={[
+                {
+                    label: '蓝色',
+                    value: 'blue'
+                }, {
+                    label: '黄色',
+                    value: 'yellow'
+                }
+            ]}
+        />
+    ]
 };

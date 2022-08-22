@@ -26,5 +26,6 @@ export default {
     plots: {
         left: blockPlot,
         right: blockPlot
-    }
+    },
+    editProps: []
 };

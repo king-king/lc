@@ -1,0 +1,10 @@
+.lc-field {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    .lc-field-label {
+        text-align: right;
+        align-self: center;
+        padding-right: 20px;
+    }
+    .lc-field-content {}
+}

@@ -4,7 +4,7 @@ import { current } from '@reduxjs/toolkit';
 import { useRenderCanvasContent } from '../tools/vtree';
 import { getClickWidget, highlightDom } from '../../../tools/dom';
 import { visitVTree } from '../../../tools/visit';
-import { setCurrentWidgetUUID, delte } from '../../../redux/slice/vtree';
+import { setCurrentWidgetUUID, dele } from '../../../redux/slice/vtree';
 
 function Canvas() {
     const content = useRenderCanvasContent();
@@ -27,7 +27,7 @@ function Canvas() {
             }
             highlightDom(info, () => {
                 // onDelete
-                dispatch(delte({ uuid: info.uuid }));
+                dispatch(dele({ uuid: info.uuid }));
             });
             dispatch(setCurrentWidgetUUID(info.uuid));
         };
