@@ -22,8 +22,10 @@ function Canvas() {
         // eslint-disable-next-line
     }, []);
     return (
-        <div className='lc-work-ground-component-canvas' data-id='lc-work-ground-component-canvas' ref={canvasEl}>
-            {content}
+        <div className='lc-work-ground-component-canvas-wrapper'>
+            <div className='lc-work-ground-component-canvas' data-id='lc-work-ground-component-canvas' ref={canvasEl}>
+                {content}
+            </div>
         </div>
     );
 }

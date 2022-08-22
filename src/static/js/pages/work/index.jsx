@@ -14,10 +14,10 @@ function Work() {
                 <div className='lc-work-ground-component-list' data-id='lc-work-ground-component-list'>
                     {widgetList.map(widget => <ComListItem key={widget.name} widget={{ ...widget }} />)}
                 </div>
+                <Canvas />
                 <div className='lc-work-ground-component-config' data-id='lc-work-ground-component-config'>
                     <Edit />
                 </div>
-                <Canvas />
             </div>
         </div>
     );
