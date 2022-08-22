@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
-import { blockPlot } from '../../tools/widget';
+import { blockPlot } from '../../../tools/widget';
 
 function Inner({ children }) {
     const r = Math.floor(Math.random() * 255);
