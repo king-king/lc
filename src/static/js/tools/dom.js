@@ -7,6 +7,7 @@ import {
     LC_WORK_GROUND_COMPONENT_CANVAS, DATA_LC_PLOT_KEY,
     DATA_LC_PLOT_WIDGET_UUID_KEY, DATA_LC_WIDGET_UUID_KEY
 } from '../config/index';
+import deleteIcon from '../../image/delete.svg';
 
 export const bubble = (dom, func) => {
     let cur = dom;
@@ -72,6 +73,8 @@ export const element = (tag, props, parent) => {
             });
         } else if (key === 'className') {
             el.className = props[key];
+        } else if (/^on[a-zA-Z]*$/.test(key)) {
+            el[key] = props[key];
         }
     });
     return {
@@ -98,7 +101,7 @@ export const element = (tag, props, parent) => {
 
 // 根据target查询其路径上第一个组件的相关信息，并将组件高亮
 let widgetHighlight;
-export const highlightDom = el => {
+export const highlightDom = (el, onDelete) => {
     widgetHighlight?.remove();
     widgetHighlight = null;
     if (el) {
@@ -107,10 +110,32 @@ export const highlightDom = el => {
                 'box-sizing': 'border-box',
                 position: 'absolute',
                 'background-color': 'rgba(255,0,0,0.2)'
-            }
+            },
+            children: [
+                element('div', {
+                    css: {
+                        width: '26px',
+                        height: '26px',
+                        position: 'absolute',
+                        top: '-28px',
+                        right: '-2px',
+                        cursor: 'pointer',
+                        'pointer-events': 'auto',
+                        'background-color': '#0073e6',
+                        'background-image': `url(${deleteIcon})`,
+                        'background-position': 'center center',
+                        'background-size': '15px 15px',
+                        'background-repeat': 'no-repeat'
+                    },
+                    onclick: () => {
+                        onDelete();
+                        widgetHighlight?.remove();
+                        widgetHighlight = null;
+                    }
+                }).el
+            ]
         });
         widgetHighlight = element('div', {
-            className: 'widget-highlight',
             css: {
                 'pointer-events': 'none',
                 position: 'fixed',
@@ -129,7 +154,7 @@ export const highlightDom = el => {
             top: `${top}px`,
             width: `${width}px`,
             height: `${height}px`,
-            border: '1px solid rgb(0, 115, 230)'
+            border: '2px solid #0073e6'
         });
     }
 };

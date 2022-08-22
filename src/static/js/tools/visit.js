@@ -16,7 +16,7 @@ export const visitVTree = (tree, func) => {
     }
 };
 
-// 给数组原地插入内容,insertIndex表示item插入后在新数组中的位置
+// 给数组原地插入内容，insertIndex表示item插入后在新数组中的位置
 export const insertArray = (arr, insertIndex, item) => {
     if (insertIndex === arr.length) {
         arr[insertIndex] = item;
@@ -29,4 +29,14 @@ export const insertArray = (arr, insertIndex, item) => {
             }
         }
     }
+};
+
+// 给数组原地删除内容deleteIndex表示被删除项的下标
+export const deleteArray = (arr, deleteIndex) => {
+    arr.forEach((node, index) => {
+        if (index > deleteIndex) {
+            arr[index - 1] = arr[index];
+        }
+    });
+    arr.length -= 1;
 };

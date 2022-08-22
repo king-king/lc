@@ -1,5 +1,5 @@
 import { createSlice, current } from '@reduxjs/toolkit';
-import { visitVTree, insertArray } from '../../tools/visit';
+import { visitVTree, insertArray, deleteArray } from '../../tools/visit';
 
 export const counterSlice = createSlice({
     // name影响的是action.type的取值
@@ -42,7 +42,18 @@ export const counterSlice = createSlice({
                 });
             }
         },
-        remove: state => {
+        delte: (state, action) => {
+            if (state.curUUID === action.payload.uuid) {
+                state.curUUID = undefined;
+            }
+            // 处理删除
+            visitVTree(state.value, (node, index, list) => {
+                if (node.uuid === action.payload.uuid) {
+                    deleteArray(list, index);
+                    return true;
+                }
+                return false;
+            });
         },
         edit: (state, action) => {
         },
@@ -54,7 +65,7 @@ export const counterSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const {
-    add, dele, edit, setCurrentWidgetUUID
+    add, delte, edit, setCurrentWidgetUUID
 } = counterSlice.actions;
 
 export default counterSlice.reducer;
