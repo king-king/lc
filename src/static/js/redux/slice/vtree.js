@@ -25,7 +25,6 @@ export const counterSlice = createSlice({
                     }
                     return false;
                 });
-                // console.log(current(state.value));
             } else {
                 // 槽位
                 // 如果有父元素就添加到父元素节点上
@@ -41,6 +40,7 @@ export const counterSlice = createSlice({
                     return false;
                 });
             }
+            console.log(current(state.value));
         },
         delte: (state, action) => {
             if (state.curUUID === action.payload.uuid) {

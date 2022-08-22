@@ -73,6 +73,8 @@ export const element = (tag, props, parent) => {
             });
         } else if (key === 'className') {
             el.className = props[key];
+        } else if (key === 'innerHTML') {
+            el.innerHTML = props[key];
         } else if (/^on[a-zA-Z]*$/.test(key)) {
             el[key] = props[key];
         }
@@ -101,10 +103,10 @@ export const element = (tag, props, parent) => {
 
 // 根据target查询其路径上第一个组件的相关信息，并将组件高亮
 let widgetHighlight;
-export const highlightDom = (el, onDelete) => {
+export const highlightDom = (info, onDelete) => {
     widgetHighlight?.remove();
     widgetHighlight = null;
-    if (el) {
+    if (info.el) {
         const highlight = element('div', {
             css: {
                 'box-sizing': 'border-box',
@@ -112,6 +114,22 @@ export const highlightDom = (el, onDelete) => {
                 'background-color': 'rgba(255,0,0,0.2)'
             },
             children: [
+                // 组件名称
+                element('div', {
+                    css: {
+                        color: 'white',
+                        'font-size': '12px',
+                        height: '26px',
+                        'line-height': '26px',
+                        padding: '0 5px',
+                        position: 'absolute',
+                        top: '-28px',
+                        right: '25px',
+                        'background-color': '#0073e6'
+                    },
+                    innerHTML: info.widget.name
+                }).el,
+                // 删除按钮
                 element('div', {
                     css: {
                         width: '26px',
@@ -148,7 +166,7 @@ export const highlightDom = (el, onDelete) => {
         }, document.body);
         const {
             left, top, width, height
-        } = el.getBoundingClientRect();
+        } = info.el.getBoundingClientRect();
         css(highlight.el, {
             left: `${left}px`,
             top: `${top}px`,
@@ -159,7 +177,7 @@ export const highlightDom = (el, onDelete) => {
     }
 };
 export const getClickWidget = target => {
-    let result;
+    let result = {};
     // {parantUUID,plot};
     bubble(target, dom => {
         if (dom.dataset.id === LC_WORK_GROUND_COMPONENT_CANVAS) {
