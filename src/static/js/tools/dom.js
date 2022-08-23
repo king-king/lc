@@ -4,7 +4,7 @@
  */
 
 import {
-    LC_WORK_GROUND_COMPONENT_CANVAS, DATA_LC_PLOT_KEY,
+    LC_WORK_GROUND_COMPONENT_LAYOUT, DATA_LC_PLOT_KEY,
     DATA_LC_PLOT_WIDGET_UUID_KEY, DATA_LC_WIDGET_UUID_KEY
 } from '../config/index';
 import deleteIcon from '../../image/delete.svg';
@@ -20,7 +20,7 @@ export const bubble = (dom, func) => {
 export const isInCavans = target => {
     let result = false;
     bubble(target, dom => {
-        if (dom.dataset.id === LC_WORK_GROUND_COMPONENT_CANVAS) {
+        if (dom.dataset.id === LC_WORK_GROUND_COMPONENT_LAYOUT) {
             result = true;
             return true;
         }
@@ -36,7 +36,7 @@ export const getWidgetOrPlot = target => {
         type: '' // plot/widget
     };
     bubble(target, dom => {
-        if (dom.dataset.id === 'lc-work-ground-component-canvas') {
+        if (dom.dataset.id === 'lc-work-ground-component-layout') {
             // 只上溯到canvas画布
             return true;
         }
@@ -181,7 +181,7 @@ export const getClickWidget = target => {
     let result = {};
     // {parantUUID,plot};
     bubble(target, dom => {
-        if (dom.dataset.id === LC_WORK_GROUND_COMPONENT_CANVAS) {
+        if (dom.dataset.id === LC_WORK_GROUND_COMPONENT_LAYOUT) {
             // 落在画布上，直接终止
             return true;
         }

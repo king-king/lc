@@ -39,7 +39,7 @@ function Layout() {
     }, [dispatch, vtree]);
     return (
         <div className='lc-work-ground-component-layout-wrapper' ref={layoutEl}>
-            <div className='lc-work-ground-component-canvas' data-id='lc-work-ground-component-canvas'>
+            <div className='lc-work-ground-component-layout' data-id='lc-work-ground-component-layout'>
                 {content}
             </div>
         </div>
