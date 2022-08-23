@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 import './style/index.scss';
 
 function Work() {
@@ -8,8 +8,12 @@ function Work() {
             <div className='lc-work-header' />
             <div className='lc-work-ground'>
                 <div className='lc-work-ground-left-menu'>
-                    <div className='lc-work-ground-icon-canvas' />
-                    <div className='lc-work-ground-icon-api' />
+                    <Link to='/work/canvas'>
+                        <div className='lc-work-ground-icon-canvas' />
+                    </Link>
+                    <Link to='/work/api'>
+                        <div className='lc-work-ground-icon-api' />
+                    </Link>
                 </div>
                 <Outlet />
             </div>
