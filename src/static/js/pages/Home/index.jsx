@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './style';
 
 function Home() {
@@ -12,8 +13,12 @@ function Home() {
             <header className='lc-home-header'>
                 <div className='lc-home-logo'>logo</div>
                 <div className='lc-home-control'>
-                    <div className='lc-home-control-item'>控制台</div>
-                    <div className='lc-home-control-item'>帮助中心</div>
+                    <div className='lc-home-control-item'>
+                        <Link to='/manage'>控制台</Link>
+                    </div>
+                    <div className='lc-home-control-item'>
+                        <a href='void()' target='_blank'>帮助中心</a>
+                    </div>
                 </div>
             </header>
             <div className='lc-home-content'>
