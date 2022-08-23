@@ -5,6 +5,7 @@
 
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import { Tooltip } from 'antd';
 import Header from '../../component/Header';
 import CustomLink from '../../component/CustomLink';
 import './style/index.scss';
@@ -16,10 +17,10 @@ function Work() {
             <div className='lc-work-ground'>
                 <div className='lc-work-ground-left-menu'>
                     <CustomLink to='/work/canvas'>
-                        <div className='lc-work-ground-icon-canvas' />
+                        <Tooltip title='UI布局' placement='right'><div className='lc-work-ground-icon-canvas' /></Tooltip>
                     </CustomLink>
                     <CustomLink to='/work/behavior'>
-                        <div className='lc-work-ground-icon-behavior' />
+                        <Tooltip title='创建行为' placement='right'><div className='lc-work-ground-icon-behavior' /></Tooltip>
                     </CustomLink>
                 </div>
                 <Outlet />
