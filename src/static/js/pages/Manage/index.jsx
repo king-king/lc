@@ -4,10 +4,13 @@
  */
 
 import React from 'react';
+import Header from '../../component/Header';
 
 function Manage() {
     return (
-        <div>Manage</div>
+        <div className='lc-manage'>
+            <Header />
+        </div>
     );
 }
 
