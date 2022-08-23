@@ -8,18 +8,18 @@ const { merge } = require('webpack-merge');
 const { app } = require('./config/config');
 const config = require('./webpack.config');
 
-const port = 8003;
+const port = 8318;
 const host = 'local.lc.com';
 
 module.exports = merge(config, {
     plugins: [new webpack.HotModuleReplacementPlugin()],
     devServer: {
         compress: true,
-        historyApiFallback: false,
+        historyApiFallback: true,
         port,
         host,
         open: {
-            target: '/',
+            target: '/work/canvas',
             app: {
                 name: app
             }

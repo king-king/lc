@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import {
     isInCavans, element, highlightDropshadow, getWidgetOrPlot, getPositionInfo
-} from '../../../tools/dom';
-import { add } from '../../../redux/slice/vtree';
-import { melon } from '../../../tools/melon';
-import { DATA_LC_WIDGET_UUID_KEY, DATA_LC_PLOT_KEY, DATA_LC_PLOT_WIDGET_UUID_KEY } from '../../../config/index';
+} from '../../../../tools/dom';
+import { add } from '../../../../redux/slice/vtree';
+import { melon } from '../../../../tools/melon';
+import { DATA_LC_WIDGET_UUID_KEY, DATA_LC_PLOT_KEY, DATA_LC_PLOT_WIDGET_UUID_KEY } from '../../../../config/index';
 
 function ComListItem({ widget }) {
     const inputEl = useRef(null);

@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { current } from '@reduxjs/toolkit';
+// import { current } from '@reduxjs/toolkit';
 import { useRenderCanvasContent } from '../tools/vtree';
-import { getClickWidget, highlightDom } from '../../../tools/dom';
-import { visitVTree } from '../../../tools/visit';
-import { setCurrentWidgetUUID, dele } from '../../../redux/slice/vtree';
+import { getClickWidget, highlightDom } from '../../../../tools/dom';
+import { visitVTree } from '../../../../tools/visit';
+import { setCurrentWidgetUUID, dele } from '../../../../redux/slice/vtree';
 
-function Canvas() {
+function Layout() {
     const content = useRenderCanvasContent();
     const canvasEl = useRef(null);
     const dispatch = useDispatch();
@@ -47,7 +47,7 @@ function Canvas() {
     );
 }
 
-Canvas.propTypes = {
+Layout.propTypes = {
 };
 
-export default React.memo(Canvas);
+export default React.memo(Layout);

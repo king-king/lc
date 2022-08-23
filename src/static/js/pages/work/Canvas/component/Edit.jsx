@@ -6,8 +6,8 @@
 // 编辑组件属性
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { widgetSet } from '../../../widget';
-import { visitVTree } from '../../../tools/visit';
+import { widgetSet } from '../../../../widget';
+import { visitVTree } from '../../../../tools/visit';
 
 function Edit() {
     const curUUID = useSelector(state => state.vtree.curUUID);
