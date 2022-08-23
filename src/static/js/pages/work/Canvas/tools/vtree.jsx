@@ -24,7 +24,7 @@ export const useRenderCanvasContent = () => {
         const component = widgetSet[widget.component].component;
         const plots = widgetSet[widget.component].plots;
         Object.keys(plots).forEach(plot => {
-            if (other[plot]) {
+            if (other[plot]?.length) {
                 // 如果此处槽位已经有了内容，则填充真实的内容
                 config[plot] = render(other[plot]);
             } else {
