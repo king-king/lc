@@ -6,10 +6,16 @@
 .lc-work-ground-api {
     display: grid;
     grid-template-columns: 280px 1fr 380px;
-    .lc-work-ground-api-add {}
+    background-color: white;
+    .lc-work-ground-api-add {
+        padding: 10px 15px;
+    }
     .lc-work-ground-api-list {
         border-left: 1px solid rgb(234, 235, 236);
         border-right: 1px solid rgb(234, 235, 236);
+        .lc-word-ground-api-table{
+            padding: 20px;
+        }
     }
     .lc-work-ground-api-edit {
     }

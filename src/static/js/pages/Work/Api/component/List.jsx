@@ -4,10 +4,14 @@
  */
 
 import React from 'react';
+import { Table } from 'antd';
+import { editTableColumns } from '../config';
 
 function List() {
     return (
-        <div className='lc-work-ground-api-list' />
+        <div className='lc-work-ground-api-list'>
+            <Table className='lc-word-ground-api-table' columns={editTableColumns} size='small' />
+        </div>
     );
 }
 
