@@ -4,10 +4,18 @@
  */
 
 import React from 'react';
+import Add from './component/Add';
+import List from './component/List';
+import Edit from './component/Edit';
+import './style';
 
 function Api() {
     return (
-        <div>Api</div>
+        <div className='lc-work-ground-api'>
+            <Add />
+            <List />
+            <Edit />
+        </div>
     );
 }
 
