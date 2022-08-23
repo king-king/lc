@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { PageHeader, Button, Table } from 'antd';
 import Header from '../../component/Header';
 import { columns } from './config';
@@ -18,7 +19,9 @@ function Manage() {
                     title='页面管理'
                     subTitle='已经创建的页面会在这里展示'
                     extra={[
-                        <Button type='primary'>创建新页面</Button>
+                        <Button type='primary'>
+                            <Link to='/work/canvas'>创建新页面</Link>
+                        </Button>
                     ]}
                 />
                 <Table className='lc-manage-page-table' columns={columns} />

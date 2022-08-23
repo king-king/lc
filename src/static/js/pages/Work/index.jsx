@@ -12,7 +12,7 @@ import './style/index.scss';
 function Work() {
     return (
         <div>
-            <Header />
+            <Header back='/manage' />
             <div className='lc-work-ground'>
                 <div className='lc-work-ground-left-menu'>
                     <CustomLink to='/work/canvas'>
