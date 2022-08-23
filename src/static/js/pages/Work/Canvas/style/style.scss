@@ -7,6 +7,7 @@
     display: grid;
     grid-template-columns: 280px 1fr 380px;
     .lc-work-ground-component-list {
+        background-color: white;
         height: 100%;
         border-right: 1px solid rgb(234, 235, 236);
         .lc-work-ground-component-item {
@@ -30,6 +31,7 @@
         }
     }
     .lc-work-ground-component-config {
+        background-color: white;
         border-left: 1px solid rgb(234, 235, 236);
         height: 100%;
     }
