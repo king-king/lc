@@ -18,8 +18,8 @@ function Work() {
                     <CustomLink to='/work/canvas'>
                         <div className='lc-work-ground-icon-canvas' />
                     </CustomLink>
-                    <CustomLink to='/work/api'>
-                        <div className='lc-work-ground-icon-api' />
+                    <CustomLink to='/work/behavior'>
+                        <div className='lc-work-ground-icon-behavior' />
                     </CustomLink>
                 </div>
                 <Outlet />

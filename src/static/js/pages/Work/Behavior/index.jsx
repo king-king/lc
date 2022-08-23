@@ -9,7 +9,7 @@ import List from './component/List';
 import Edit from './component/Edit';
 import './style';
 
-function Api() {
+function Behavior() {
     return (
         <div className='lc-work-ground-api'>
             <Add />
@@ -19,4 +19,4 @@ function Api() {
     );
 }
 
-export default React.memo(Api);
+export default React.memo(Behavior);

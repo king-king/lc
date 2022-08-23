@@ -11,7 +11,7 @@ import store from './redux/store';
 import Home from './pages/Home';
 import Work from './pages/Work';
 import Canvas from './pages/Work/Canvas';
-import Api from './pages/Work/Api';
+import Behavior from './pages/Work/Behavior';
 import Manage from './pages/Manage';
 import '../style/base.scss';
 
@@ -23,7 +23,7 @@ root.render(
                 <Route path='/' element={<Home />} />
                 <Route path='/work' element={<Work />}>
                     <Route path='canvas' element={<Canvas />} />
-                    <Route path='api' element={<Api />} />
+                    <Route path='behavior' element={<Behavior />} />
                 </Route>
                 <Route path='/manage' element={<Manage />} />
             </Routes>
