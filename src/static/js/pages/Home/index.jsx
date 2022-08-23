@@ -16,6 +16,9 @@ function Home() {
                     <div className='lc-home-control-item'>帮助中心</div>
                 </div>
             </header>
+            <div className='lc-home-content'>
+                <div>基于低代码，页面快速搭建平台</div>
+            </div>
         </div>
     );
 }
