@@ -5,8 +5,24 @@
 .lc-work-ground {
     height: 100%;
     display: grid;
-    grid-template-columns: 280px 1fr 380px;
-    // TODO:以后此处考虑用flex重构
+    grid-template-columns: 50px 280px 1fr 380px;
+    .lc-work-ground-left-menu {
+        border-right: 1px solid rgb(234, 235, 236);
+        .lc-work-ground-icon-canvas {
+            cursor: pointer;
+            height: 20px;
+            margin: 15px auto;
+            background: url(../../../../image/canvas.svg) center center no-repeat;
+            background-size: 20px auto;
+        }
+        .lc-work-ground-icon-api {
+            cursor: pointer;
+            height: 20px;
+            margin: 15px auto;
+            background: url(../../../../image/api.svg) center center no-repeat;
+            background-size: 20px auto;
+        }
+    }
     .lc-work-ground-component-list {
         height: 100%;
         border-right: 1px solid rgb(234, 235, 236);
