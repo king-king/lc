@@ -6,23 +6,24 @@
 export const columns = [
     {
         title: '页面名称',
-        dataIndex: '',
-        key: ''
+        dataIndex: 'name',
+        key: 'name'
     }, {
         title: '创建人',
-        dataIndex: '',
-        key: ''
+        dataIndex: 'creator',
+        key: 'creator'
     }, {
         title: '修改者',
-        dataIndex: '',
-        key: ''
+        dataIndex: 'editor',
+        key: 'editor'
     }, {
         title: '最后更新时间',
-        dataIndex: '',
-        key: ''
+        dataIndex: 'updateTime',
+        key: 'updateTime'
     }, {
         title: '操作',
-        dataIndex: '',
-        key: ''
+        dataIndex: 'process',
+        key: 'process',
+        align: 'center'
     }
 ];

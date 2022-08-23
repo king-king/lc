@@ -16,5 +16,10 @@ export const editTableColumns = [
         title: '消费者',
         dataIndex: 'consumer',
         key: 'consumer'
+    }, {
+        title: '操作',
+        dataIndex: 'process',
+        key: 'process',
+        align: 'center'
     }
 ];
