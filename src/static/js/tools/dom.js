@@ -253,3 +253,13 @@ export const highlightDropshadow = (dropEl, event) => {
         });
     }
 };
+
+export const visitChildren = (node, func) => {
+    const visit = cnode => {
+        for (let i = 0; i < cnode.children.length; i++) {
+            func(cnode.children[i]);
+            visit(cnode.children[i]);
+        }
+    };
+    visit(node);
+};

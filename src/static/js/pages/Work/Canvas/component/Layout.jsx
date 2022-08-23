@@ -2,41 +2,53 @@ import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { current } from '@reduxjs/toolkit';
 import { useRenderCanvasContent } from '../tools/vtree';
-import { getClickWidget, highlightDom } from '../../../../tools/dom';
+import { DATA_LC_WIDGET_UUID_KEY } from '../../../../config/index';
+import { getClickWidget, highlightDom, visitChildren } from '../../../../tools/dom';
 import { visitVTree } from '../../../../tools/visit';
 import { setCurrentWidgetUUID, dele } from '../../../../redux/slice/vtree';
 
 function Layout() {
+    const curUUID = useSelector(state => state.vtree.curUUID);
     const content = useRenderCanvasContent();
     const layoutEl = useRef(null);
     const dispatch = useDispatch();
     const vtree = useSelector(state => state.vtree.value);
     useEffect(() => {
-        const cavnasDom = layoutEl.current;
+        const el = layoutEl.current;
         const process = ce => {
-            let info = getClickWidget(ce.target);
-            if (info.uuid) {
-                // 如果有落点，读取其内容
-                visitVTree(vtree, node => {
-                    if (node.uuid === info.uuid) {
-                        info = {
-                            ...info,
-                            ...node
-                        };
-                    }
-                });
-            }
-            highlightDom(info, cavnasDom, () => {
-                // onDelete
-                dispatch(dele({ uuid: info.uuid }));
-            });
-            dispatch(setCurrentWidgetUUID(info.uuid));
+            const { uuid } = getClickWidget(ce.target);
+            dispatch(setCurrentWidgetUUID(uuid));
         };
-        cavnasDom.addEventListener('click', process);
+        el.addEventListener('click', process);
         return () => {
-            cavnasDom.removeEventListener('click', process);
+            el.addEventListener('click', process);
         };
-    }, [dispatch, vtree]);
+    }, [dispatch]);
+
+    useEffect(() => {
+        let curSelectInfo = { uuid: curUUID };
+        if (curUUID) {
+            // 如果有落点，读取其虚拟树内容
+            visitVTree(vtree, node => {
+                if (node.uuid === curUUID) {
+                    curSelectInfo = {
+                        ...curSelectInfo,
+                        ...node
+                    };
+                }
+            });
+            // 获取其真实dom
+            visitChildren(layoutEl.current, node => {
+                if (node.dataset[DATA_LC_WIDGET_UUID_KEY] === curUUID) {
+                    curSelectInfo.el = node;
+                }
+            });
+        }
+        highlightDom(curSelectInfo, layoutEl.current, () => {
+            // onDelete
+            dispatch(dele({ uuid: curSelectInfo.uuid }));
+        });
+    }, [curUUID, dispatch, vtree]);
     return (
         <div className='lc-work-ground-component-layout-wrapper' ref={layoutEl}>
             <div className='lc-work-ground-component-layout' data-id='lc-work-ground-component-layout'>
