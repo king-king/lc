@@ -102,10 +102,10 @@ export const element = (tag, props, parent) => {
 // };
 
 // 根据target查询其路径上第一个组件的相关信息，并将组件高亮
-let widgetHighlight;
-export const highlightDom = (info, onDelete) => {
-    widgetHighlight?.remove();
-    widgetHighlight = null;
+let widgetHighlightWrapper;
+export const highlightDom = (info, parentNode = document.body, onDelete) => {
+    widgetHighlightWrapper?.remove();
+    widgetHighlightWrapper = null;
     if (info.el) {
         const highlight = element('div', {
             css: {
@@ -147,29 +147,30 @@ export const highlightDom = (info, onDelete) => {
                     },
                     onclick: () => {
                         onDelete();
-                        widgetHighlight?.remove();
-                        widgetHighlight = null;
+                        widgetHighlightWrapper?.remove();
+                        widgetHighlightWrapper = null;
                     }
                 }).el
             ]
         });
-        widgetHighlight = element('div', {
+        widgetHighlightWrapper = element('div', {
             css: {
                 'pointer-events': 'none',
-                position: 'fixed',
+                position: 'absolute',
                 top: 0,
                 left: 0,
                 bottom: 0,
                 right: 0
             },
             children: [highlight.el]
-        }, document.body);
+        }, parentNode);
         const {
             left, top, width, height
         } = info.el.getBoundingClientRect();
+        const parentInfo = parentNode.getBoundingClientRect();
         css(highlight.el, {
-            left: `${left}px`,
-            top: `${top}px`,
+            left: `${left - parentInfo.left}px`,
+            top: `${top - parentInfo.top}px`,
             width: `${width}px`,
             height: `${height}px`,
             border: '2px solid #0073e6'

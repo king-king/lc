@@ -8,10 +8,11 @@ import { setCurrentWidgetUUID, dele } from '../../../../redux/slice/vtree';
 
 function Layout() {
     const content = useRenderCanvasContent();
-    const canvasEl = useRef(null);
+    const layoutEl = useRef(null);
     const dispatch = useDispatch();
     const vtree = useSelector(state => state.vtree.value);
     useEffect(() => {
+        const cavnasDom = layoutEl.current;
         const process = ce => {
             let info = getClickWidget(ce.target);
             if (info.uuid) {
@@ -25,22 +26,20 @@ function Layout() {
                     }
                 });
             }
-            highlightDom(info, () => {
+            highlightDom(info, cavnasDom, () => {
                 // onDelete
                 dispatch(dele({ uuid: info.uuid }));
             });
             dispatch(setCurrentWidgetUUID(info.uuid));
         };
-        const el = canvasEl.current;
-        el.addEventListener('click', process);
+        cavnasDom.addEventListener('click', process);
         return () => {
-            el.removeEventListener('click', process);
+            cavnasDom.removeEventListener('click', process);
         };
-        // eslint-disable-next-line
-    }, [vtree]);
+    }, [dispatch, vtree]);
     return (
-        <div className='lc-work-ground-component-canvas-wrapper'>
-            <div className='lc-work-ground-component-canvas' data-id='lc-work-ground-component-canvas' ref={canvasEl}>
+        <div className='lc-work-ground-component-layout-wrapper' ref={layoutEl}>
+            <div className='lc-work-ground-component-canvas' data-id='lc-work-ground-component-canvas'>
                 {content}
             </div>
         </div>
