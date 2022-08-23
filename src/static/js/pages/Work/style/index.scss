@@ -13,9 +13,9 @@
             height: 30px;
             width: 30px;
             margin: 15px auto;
-            border-radius: 2px;
+            border-radius: 4px;
             &.match {
-                background-color: rgb(218, 224, 240);
+                background-color: rgba(218, 224, 240, 0.5);
             }
         }
         .lc-work-ground-icon-canvas {

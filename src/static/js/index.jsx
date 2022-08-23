@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import 'antd/dist/antd.css';
 import store from './redux/store';
+import Home from './pages/Home';
 import Work from './pages/Work';
 import Canvas from './pages/Work/Canvas';
 import Api from './pages/Work/Api';
@@ -19,6 +20,7 @@ root.render(
     <Provider store={store}>
         <BrowserRouter>
             <Routes>
+                <Route path='/' element={<Home />} />
                 <Route path='/work' element={<Work />}>
                     <Route path='canvas' element={<Canvas />} />
                     <Route path='api' element={<Api />} />
