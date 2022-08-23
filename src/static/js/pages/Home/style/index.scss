@@ -1,0 +1,25 @@
+/*
+ * Created by king at 2022-8-23 22:09:58
+ * Copyright (c) 2022
+ */
+
+.lc-home {
+    .lc-home-header {
+        height: 100px;
+        box-shadow: rgb(0 0 0 / 4%) 0px 4px 8px 0px;
+        padding: 0px 60px;
+        display: flex;
+        box-align: center;
+        align-items: center;
+        .lc-home-logo {
+            flex-grow: 1;
+        }
+        .lc-home-control {
+            display: flex;
+            .lc-home-control-item {
+                padding-left: 20px;
+                color: rgb(102, 102, 102);
+            }
+        }
+    }
+}

@@ -4,10 +4,19 @@
  */
 
 import React from 'react';
+import './style';
 
 function Home() {
     return (
-        <div>首页</div>
+        <div className='lc-home'>
+            <header className='lc-home-header'>
+                <div className='lc-home-logo'>logo</div>
+                <div className='lc-home-control'>
+                    <div className='lc-home-control-item'>控制台</div>
+                    <div className='lc-home-control-item'>帮助中心</div>
+                </div>
+            </header>
+        </div>
     );
 }
 
