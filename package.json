@@ -41,7 +41,7 @@
         "webpack-merge": "^5.8.0"
     },
     "dependencies": {
-        "@ant-design/icons": "^4.7.0",
+        "@ant-design/icons": "4.7.0",
         "@babel/runtime": "7.16.7",
         "@reduxjs/toolkit": "1.8.2",
         "antd": "4.22.7",
