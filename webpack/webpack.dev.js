@@ -23,6 +23,13 @@ module.exports = merge(config, {
             app: {
                 name: app
             }
+        },
+        proxy: {
+            '/api/**': {
+                target: 'http://j-api.jd.com/mocker/data?p=1969&v=GET&u=',
+                secure: true,
+                changeOrigin: true
+            }
         }
     }
 });

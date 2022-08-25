@@ -10,12 +10,12 @@ export const columns = [
         key: 'name'
     }, {
         title: '创建人',
-        dataIndex: 'creator',
-        key: 'creator'
+        dataIndex: 'creatorName',
+        key: 'creatorName'
     }, {
         title: '修改者',
-        dataIndex: 'editor',
-        key: 'editor'
+        dataIndex: 'modifierName',
+        key: 'modifierName'
     }, {
         title: '最后更新时间',
         dataIndex: 'updateTime',

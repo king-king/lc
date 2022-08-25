@@ -14,7 +14,7 @@ function Home() {
                 <div className='lc-home-logo'>logo</div>
                 <div className='lc-home-control'>
                     <div className='lc-home-control-item'>
-                        <Link to='/manage'>控制台</Link>
+                        <Link to='/manage/pagelist'>控制台</Link>
                     </div>
                     <div className='lc-home-control-item'>
                         <a href='void()' target='_blank'>帮助中心</a>

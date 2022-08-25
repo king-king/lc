@@ -12,7 +12,8 @@ import Home from './pages/Home';
 import Work from './pages/Work';
 import Canvas from './pages/Work/Canvas';
 import Behavior from './pages/Work/Behavior';
-import Manage from './pages/Manage';
+import PageList from './pages/Manage/PageList';
+import BusinessList from './pages/Manage/BusinessList';
 import '../style/base.scss';
 
 const root = createRoot(document.getElementById('root'));
@@ -25,7 +26,8 @@ root.render(
                     <Route path='canvas' element={<Canvas />} />
                     <Route path='behavior' element={<Behavior />} />
                 </Route>
-                <Route path='/manage' element={<Manage />} />
+                <Route path='/manage/pagelist' element={<PageList />} />
+                <Route path='/manage/businesslist' element={<BusinessList />} />
             </Routes>
         </BrowserRouter>
     </Provider>

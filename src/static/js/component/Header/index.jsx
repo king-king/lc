@@ -6,27 +6,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { LeftOutlined } from '@ant-design/icons';
 import './style';
 
-function Header({ back }) {
+function Header() {
     return (
         <header className='lc-header'>
             <div>
-                {back?.length ? (
-                    <Link to={back}>
-                        <LeftOutlined />
-                        返回
-                    </Link>
-                ) : null}
+                <Link to='/manage/pagelist'>
+                    <div className='icon-logo' />
+                </Link>
             </div>
         </header>
     );
 }
 Header.propTypes = {
-    back: PropTypes.string
 };
 Header.defaultProps = {
-    back: ''
 };
 export default React.memo(Header);
