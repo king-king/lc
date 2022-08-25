@@ -39,11 +39,11 @@ function PageList() {
                     title='控制台'
                     subTitle='已经创建的页面会在这里展示'
                     extra={[
-                        <Button key='businesslist' type='primary'>
-                            <Link to='/manage/businesslist'>业务线管理</Link>
-                        </Button>,
                         <Button key='create' type='primary'>
                             <Link to='/work/canvas'>创建新页面</Link>
+                        </Button>,
+                        <Button key='businesslist' type='primary'>
+                            <Link to='/manage/business/list'>业务线管理</Link>
                         </Button>
                     ]}
                 />

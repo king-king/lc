@@ -12,7 +12,7 @@ function Header() {
     return (
         <header className='lc-header'>
             <div>
-                <Link to='/manage/pagelist'>
+                <Link to='/manage/page/list'>
                     <div className='icon-logo' />
                 </Link>
             </div>

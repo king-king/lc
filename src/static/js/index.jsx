@@ -14,7 +14,7 @@ import Canvas from './pages/Work/Canvas';
 import Behavior from './pages/Work/Behavior';
 import PageList from './pages/Manage/PageList';
 import BusinessList from './pages/Manage/BusinessList';
-import Insight from './pages/Manage/Insight';
+import PageInsight from './pages/Manage/PageInsight';
 import '../style/base.scss';
 
 const root = createRoot(document.getElementById('root'));
@@ -27,10 +27,10 @@ root.render(
                     <Route path='canvas' element={<Canvas />} />
                     <Route path='behavior' element={<Behavior />} />
                 </Route>
-                <Route path='/manage/pagelist' element={<PageList />} />
-                <Route path='/manage/businesslist' element={<BusinessList />} />
+                <Route path='/manage/page/list' element={<PageList />} />
+                <Route path='/manage/business/list' element={<BusinessList />} />
                 {/* 页面统计信息 */}
-                <Route path='/manage/page/insight' element={<Insight />} />
+                <Route path='/manage/page/insight' element={<PageInsight />} />
             </Routes>
         </BrowserRouter>
     </Provider>

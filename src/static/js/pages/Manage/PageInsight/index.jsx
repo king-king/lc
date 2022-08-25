@@ -12,7 +12,7 @@ import Section from '../../../component/Section';
 import { } from './config';
 import './style';
 
-function Insight() {
+function PageInsight() {
     return (
         <div className='lc-manage'>
             <Header />
@@ -26,4 +26,4 @@ function Insight() {
     );
 }
 
-export default React.memo(Insight);
+export default React.memo(PageInsight);
