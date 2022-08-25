@@ -10,23 +10,34 @@ export const pageSlice = createSlice({
     // name影响的是action.type的取值
     name: 'business',
     initialState: {
-        // 存放所有的页面
-        list: []
+        // 存放所有的业务线
+        businessList: [],
+        // 存放某个业务线的所有页面
+        pageList: []
     },
     reducers: {
-        updateList: (state, action) => {
-            state.list = action.payload;
+        updateBusinessList: (state, action) => {
+            state.businessList = action.payload;
+        },
+        updateBusinessPageList: (state, action) => {
+            state.pageList = action.payload;
         }
     }
 });
 
-export const {
-    updateList
+const {
+    updateBusinessList, updateBusinessPageList
 } = pageSlice.actions;
 
-export const fetchPage = () => async dispatch => {
+export const fetchBusinessList = () => async dispatch => {
     axios.get(url.business.list, {}).then(res => {
-        dispatch(updateList(res.data.data));
+        dispatch(updateBusinessList(res.data.data));
+    });
+};
+
+export const fetchBusinessPageList = () => async dispatch => {
+    axios.get(url.business.pageList, {}).then(res => {
+        dispatch(updateBusinessPageList(res.data.data));
     });
 };
 

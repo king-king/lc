@@ -10,21 +10,22 @@ import { Link } from 'react-router-dom';
 import { PageHeader, Button, Table } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from '../../../component/Header';
-import { fetchPage } from '../../../redux/slice/business';
+import { fetchBusinessPageList } from '../../../redux/slice/business';
 import { columns } from './config';
 import './style';
 
 function BusinessPageList() {
     const dispatch = useDispatch();
-    const dataSource = useSelector(state => state.business.list);
+    const dataSource = useSelector(state => state.business.pageList);
     useEffect(() => {
-        dispatch(fetchPage('yes'));
+        document.title = '业务线页面列表';
+        dispatch(fetchBusinessPageList());
     }, [dispatch]);
     // 操作列
     columns[columns.length - 1].render = () => (
         <div>
             <Button type='link'>操作历史</Button>
-            <Button type='link'>修改版本</Button>
+            <Button type='link'>修改线上版本</Button>
         </div>
     );
     return (

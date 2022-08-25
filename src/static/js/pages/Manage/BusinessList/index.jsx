@@ -8,22 +8,24 @@ import { Link } from 'react-router-dom';
 import { PageHeader, Button, Table } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from '../../../component/Header';
-import { fetchPage } from '../../../redux/slice/business';
+import { fetchBusinessList } from '../../../redux/slice/business';
 import { columns } from './config';
 import './style';
 
 function BusinessList() {
     const dispatch = useDispatch();
-    const dataSource = useSelector(state => state.business.list);
+    const dataSource = useSelector(state => state.business.businessList);
     useEffect(() => {
-        dispatch(fetchPage('yes'));
+        dispatch(fetchBusinessList());
     }, [dispatch]);
     // 操作列
     columns[columns.length - 1].render = () => (
         <div>
             <Button type='link'>编辑</Button>
             <Button type='link'>删除</Button>
-            <Button type='link'>页面</Button>
+            <Button type='link'>
+                <Link to='/manage/business/pagelist'>页面</Link>
+            </Button>
             <Button type='link'>
                 <Link to='/manage/business/insight'>统计</Link>
             </Button>

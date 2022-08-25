@@ -5,25 +5,21 @@
 
 export const columns = [
     {
-        title: '业务线名称',
-        dataIndex: 'businessName',
-        key: 'businessName'
+        title: '页面名称',
+        dataIndex: 'name',
+        key: 'name'
     }, {
-        title: '简码',
-        dataIndex: 'code',
-        key: 'code'
+        title: '线上版本',
+        dataIndex: 'version',
+        key: 'version'
     }, {
-        title: '域名',
-        dataIndex: 'host',
-        key: 'host'
+        title: '修改者',
+        dataIndex: 'modifierName',
+        key: 'modifierName'
     }, {
-        title: '创建者',
-        dataIndex: 'creatorName',
-        key: 'creatorName'
-    }, {
-        title: '创建时间',
-        dataIndex: 'createTime',
-        key: 'createTime'
+        title: '最后更新时间',
+        dataIndex: 'updateTime',
+        key: 'updateTime'
     }, {
         title: '操作',
         dataIndex: 'process',

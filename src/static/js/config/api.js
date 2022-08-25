@@ -5,6 +5,7 @@
 
 export const url = {
     business: {
-        list: '/api/business/list'
+        list: '/api/business/list',
+        pageList: '/api/business/pageList'
     }
 };
