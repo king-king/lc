@@ -14,6 +14,7 @@ import Canvas from './pages/Work/Canvas';
 import Behavior from './pages/Work/Behavior';
 import PageList from './pages/Manage/PageList';
 import BusinessList from './pages/Manage/BusinessList';
+import Insight from './pages/Manage/Insight';
 import '../style/base.scss';
 
 const root = createRoot(document.getElementById('root'));
@@ -28,6 +29,8 @@ root.render(
                 </Route>
                 <Route path='/manage/pagelist' element={<PageList />} />
                 <Route path='/manage/businesslist' element={<BusinessList />} />
+                {/* 页面统计信息 */}
+                <Route path='/manage/page/insight' element={<Insight />} />
             </Routes>
         </BrowserRouter>
     </Provider>

@@ -26,7 +26,9 @@ function PageList() {
         <div>
             <Button type='link'>编辑</Button>
             <Button type='link'>删除</Button>
-            <Button type='link'>统计</Button>
+            <Button type='link'>
+                <Link to='/manage/page/insight'>统计</Link>
+            </Button>
         </div>
     );
     return (
