@@ -19,7 +19,7 @@ module.exports = merge(config, {
         port,
         host,
         open: {
-            target: '/work/canvas',
+            target: '/',
             app: {
                 name: app
             }

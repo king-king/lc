@@ -12,18 +12,18 @@ import Section from '../../../component/Section';
 import { } from './config';
 import './style';
 
-function PageInsight() {
+function BusinessInsight() {
     return (
         <div>
             <Header />
-            <Section className='lc-page-insight'>
+            <Section className='lc-business-insight'>
                 <PageHeader
                     title='统计明细'
-                    subTitle='展示页面的使用情况'
+                    subTitle='展示业务线下各个页面的使用情况'
                 />
             </Section>
         </div>
     );
 }
 
-export default React.memo(PageInsight);
+export default React.memo(BusinessInsight);

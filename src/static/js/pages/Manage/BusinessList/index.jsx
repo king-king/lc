@@ -4,6 +4,7 @@
  */
 
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { PageHeader, Button, Table } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from '../../../component/Header';
@@ -22,7 +23,9 @@ function BusinessList() {
         <div>
             <Button type='link'>编辑</Button>
             <Button type='link'>删除</Button>
-            <Button type='link'>统计</Button>
+            <Button type='link'>
+                <Link to='/manage/business/insight'>统计</Link>
+            </Button>
         </div>
     );
     return (
@@ -30,7 +33,7 @@ function BusinessList() {
             <Header />
             <div className='lc-business-list'>
                 <PageHeader
-                    title='业务线管理'
+                    title='业务线列表'
                     subTitle='可以编辑、创建业务线'
                     extra={[
                         <Button key='create' type='primary'>创建业务线</Button>

@@ -15,6 +15,7 @@ import Behavior from './pages/Work/Behavior';
 import PageList from './pages/Manage/PageList';
 import BusinessList from './pages/Manage/BusinessList';
 import PageInsight from './pages/Manage/PageInsight';
+import BusinessInsight from './pages/Manage/BusinessInsight';
 import '../style/base.scss';
 
 const root = createRoot(document.getElementById('root'));
@@ -31,6 +32,8 @@ root.render(
                 <Route path='/manage/business/list' element={<BusinessList />} />
                 {/* 页面统计信息 */}
                 <Route path='/manage/page/insight' element={<PageInsight />} />
+                {/* 业务线统计信息 */}
+                <Route path='/manage/business/insight' element={<BusinessInsight />} />
             </Routes>
         </BrowserRouter>
     </Provider>
