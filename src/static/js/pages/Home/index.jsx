@@ -12,7 +12,7 @@ function Home() {
     return (
         <div className='lc-home'>
             <header className='lc-home-header'>
-                <div className='lc-home-logo'>logo</div>
+                <div className='lc-home-logo' />
                 <div className='lc-home-control'>
                     <div className='lc-home-control-item'>
                         <Link to='/manage/page/list'>控制台</Link>
