@@ -1,0 +1,19 @@
+/*
+ * Created by king at 2022-8-25 19:19:57
+ * Copyright (c) 2022
+ */
+
+.lc-section-not-found {
+    position: relative;
+    height: calc(100% - 124px);
+    text-align: center;
+    background: url(../../../../image/404.gif) center center no-repeat;
+    background-size: auto 50%;
+    background-color: #fff;
+    .ant-btn {
+        position: absolute;
+        top: 75%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
