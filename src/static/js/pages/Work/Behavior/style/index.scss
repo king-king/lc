@@ -9,14 +9,19 @@
     background-color: white;
     .lc-work-ground-api-add {
         padding: 10px 15px;
+        .lc-work-ground-api-add-title {
+            padding: 5px 0;
+        }
+        .lc-work-ground-api-add-radio {
+            padding: 5px;
+        }
     }
     .lc-work-ground-api-list {
         border-left: 1px solid rgb(234, 235, 236);
         border-right: 1px solid rgb(234, 235, 236);
-        .lc-word-ground-api-table{
+        .lc-word-ground-api-table {
             padding: 20px;
         }
     }
-    .lc-work-ground-api-edit {
-    }
+    .lc-work-ground-api-edit {}
 }
