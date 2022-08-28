@@ -3,6 +3,19 @@
  * Copyright (c) 2022
  */
 
+// 行为配置
+export const behaviorList = [{
+    label: '组件交互',
+    value: 'component_behavior'
+}, {
+    label: '发送请求',
+    value: 'api_behavior'
+}, {
+    label: '打开新页面',
+    value: 'open_page_behavior'
+}];
+
+// 动作列表表格配置
 export const editTableColumns = [
     {
         title: '名称',

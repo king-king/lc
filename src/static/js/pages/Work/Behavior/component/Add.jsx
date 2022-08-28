@@ -5,6 +5,7 @@
 
 import React, { useState } from 'react';
 import { Typography, Radio, Button } from 'antd';
+import { behaviorList } from '../config/index';
 
 const { Title } = Typography;
 
@@ -12,10 +13,6 @@ function Add() {
     const requestList = [{
         label: '通用接口',
         value: 'common_request'
-    }];
-    const behaviorList = [{
-        label: '通用行为',
-        value: 'common_behavior'
     }];
     const [value, setValue] = useState();
     const onChange = item => {
