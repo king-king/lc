@@ -9,6 +9,10 @@ export const editTableColumns = [
         dataIndex: 'name',
         key: 'name'
     }, {
+        title: '类型',
+        dataIndex: 'type',
+        key: 'type'
+    }, {
         title: '提供者',
         dataIndex: 'provider',
         key: 'provider'

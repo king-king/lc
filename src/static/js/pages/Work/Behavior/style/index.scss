@@ -3,25 +3,29 @@
  * Copyright (c) 2022
  */
 
-.lc-work-ground-api {
+.lc-work-ground-behavior {
     display: grid;
     grid-template-columns: 280px 1fr 380px;
     background-color: white;
-    .lc-work-ground-api-add {
+    .lc-work-ground-behavior-add {
         padding: 10px 15px;
-        .lc-work-ground-api-add-title {
+        .lc-work-ground-behavior-add-title {
             padding: 5px 0;
         }
-        .lc-work-ground-api-add-radio {
-            padding: 5px;
+        .lc-work-ground-behavior-add-radio {
+            padding: 5px 5px 10px;
+        }
+        .lc-work-ground-behavior-add-button {
+            margin-top: 120px;
+            transition: none;
         }
     }
-    .lc-work-ground-api-list {
+    .lc-work-ground-behavior-list {
         border-left: 1px solid rgb(234, 235, 236);
         border-right: 1px solid rgb(234, 235, 236);
         .lc-word-ground-api-table {
             padding: 20px;
         }
     }
-    .lc-work-ground-api-edit {}
+    .lc-work-ground-behavior-edit {}
 }

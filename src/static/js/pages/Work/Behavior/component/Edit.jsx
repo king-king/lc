@@ -7,7 +7,7 @@ import React from 'react';
 
 function Edit() {
     return (
-        <div className='lc-work-ground-api-edit' />
+        <div className='lc-work-ground-behavior-edit' />
     );
 }
 

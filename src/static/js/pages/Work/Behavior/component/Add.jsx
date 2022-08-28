@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from 'react';
-import { Typography, Radio } from 'antd';
+import { Typography, Radio, Button } from 'antd';
 
 const { Title } = Typography;
 
@@ -22,11 +22,12 @@ function Add() {
         setValue(item.target.value);
     };
     return (
-        <div className='lc-work-ground-api-add'>
-            <Title className='lc-work-ground-api-add-title' level={5}>请求</Title>
-            <Radio.Group className='lc-work-ground-api-add-radio' size='small' options={requestList} onChange={onChange} value={value} />
-            <Title className='lc-work-ground-api-add-title' level={5}>动作</Title>
-            <Radio.Group className='lc-work-ground-api-add-radio' size='small' options={behaviorList} onChange={onChange} value={value} />
+        <div className='lc-work-ground-behavior-add'>
+            <Title className='lc-work-ground-behavior-add-title' level={5}>请求</Title>
+            <Radio.Group className='lc-work-ground-behavior-add-radio' size='small' options={requestList} onChange={onChange} value={value} />
+            <Title className='lc-work-ground-behavior-add-title' level={5}>动作</Title>
+            <Radio.Group className='lc-work-ground-behavior-add-radio' size='small' options={behaviorList} onChange={onChange} value={value} />
+            <Button className='lc-work-ground-behavior-add-button' block>添加</Button>
         </div>
     );
 }

@@ -11,7 +11,7 @@ import './style';
 
 function Behavior() {
     return (
-        <div className='lc-work-ground-api'>
+        <div className='lc-work-ground-behavior'>
             <Add />
             <List />
             <Edit />

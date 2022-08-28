@@ -20,7 +20,7 @@ function Work() {
                         <Tooltip title='UI布局' placement='right'><div className='lc-work-ground-icon-canvas' /></Tooltip>
                     </CustomLink>
                     <CustomLink to='/work/behavior'>
-                        <Tooltip title='创建行为' placement='right'><div className='lc-work-ground-icon-behavior' /></Tooltip>
+                        <Tooltip title='创建动作' placement='right'><div className='lc-work-ground-icon-behavior' /></Tooltip>
                     </CustomLink>
                 </div>
                 <Outlet />
