@@ -18,7 +18,6 @@ function BusinessPageList() {
     const dispatch = useDispatch();
     const dataSource = useSelector(state => state.business.pageList);
     useEffect(() => {
-        document.title = '业务线页面列表';
         dispatch(fetchBusinessPageList());
     }, [dispatch]);
     // 操作列
