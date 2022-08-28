@@ -26,7 +26,7 @@ function Home() {
                 <div className='lc-home-content-name'>JDh LCP</div>
                 <div>基于低代码，页面快速搭建平台</div>
                 <Button type='primary'>
-                    <Link to='/work/canvas'>立即使用</Link>
+                    <Link to='/manage/page/list'>立即使用</Link>
                 </Button>
             </div>
         </div>
