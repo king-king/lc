@@ -3,6 +3,9 @@
  * Copyright (c) 2022
  */
 import CommonApi from '../../../../widget/Behavior/component/CommonApi';
+import CallApi from '../../../../widget/Behavior/component/CallApi';
+import ComponentInteract from '../../../../widget/Behavior/component/ComponentInteract';
+import OpenOuterPage from '../../../../widget/Behavior/component/OpenOuterPage';
 
 // 请求配置
 export const addList = [
@@ -18,13 +21,16 @@ export const addList = [
         label: '动作',
         list: [{
             label: '组件交互',
-            value: 'component_behavior'
+            value: 'component_interact',
+            EditContent: ComponentInteract
         }, {
             label: '发送请求',
-            value: 'api_behavior'
+            value: 'call_api',
+            EditContent: CallApi
         }, {
-            label: '打开新页面',
-            value: 'open_page_behavior'
+            label: '打开外部页面',
+            value: 'open_outer_page',
+            EditContent: OpenOuterPage
         }]
     }
 ];
