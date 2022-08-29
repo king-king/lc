@@ -5,28 +5,46 @@
 
 import React, { useState } from 'react';
 import { Typography, Radio, Button } from 'antd';
-import { behaviorList } from '../config/index';
+import { useDispatch } from 'react-redux';
+import { addList } from '../config/index';
+import { add } from '../../../../redux/slice/behavior';
 
 const { Title } = Typography;
 
 function Add() {
-    const requestList = [{
-        label: '通用接口',
-        value: 'common_request'
-    }];
-    const [value, setValue] = useState();
-    const onChange = item => {
-        setValue(item.target.value);
+    const dispatch = useDispatch();
+    const [value, setValue] = useState({});
+    const onRadioChange = item => {
+        const curValue = { value: item.target.value };
+        let curLabel;
+        addList.forEach(block => {
+            block.list.forEach(bItem => {
+                if (bItem.value === item.target.value) {
+                    curLabel = bItem.label;
+                }
+            });
+        });
+        curValue.label = curLabel;
+        setValue(curValue);
+    };
+    const onAdd = () => {
+        dispatch(add({
+            name: value.label,
+            type: value.label
+        }));
     };
     return (
         <div className='lc-work-ground-behavior-add'>
-            <Title className='lc-work-ground-behavior-add-title' level={5}>请求</Title>
-            <Radio.Group className='lc-work-ground-behavior-add-radio' size='small' options={requestList} onChange={onChange} value={value} />
-            <Title className='lc-work-ground-behavior-add-title' level={5}>动作</Title>
-            <Radio.Group className='lc-work-ground-behavior-add-radio' size='small' options={behaviorList} onChange={onChange} value={value} />
-            <Button className='lc-work-ground-behavior-add-button' block>添加</Button>
+            {addList.map(item => (
+                <div key={item.label}>
+                    <Title className='lc-work-ground-behavior-add-title' level={5}>{item.label}</Title>
+                    <Radio.Group className='lc-work-ground-behavior-add-radio' size='small' options={item.list} onChange={onRadioChange} value={value.value} />
+                </div>
+            ))}
+            <Button className='lc-work-ground-behavior-add-button' block disabled={!value.value} onClick={onAdd}>添加</Button>
         </div>
     );
 }
-
+Add.propTypes = {
+};
 export default React.memo(Add);
