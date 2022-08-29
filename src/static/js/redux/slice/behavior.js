@@ -5,11 +5,11 @@
 
 // 存放动作的数据
 import { v4 as uuidv4 } from 'uuid';
-import { createSlice, current } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-export const apiSlice = createSlice({
+export const behaviorSlice = createSlice({
     // name影响的是action.type的取值
-    name: 'api',
+    name: 'behavior',
     initialState: {
         // 存放所有的api
         list: [],
@@ -27,8 +27,16 @@ export const apiSlice = createSlice({
         },
         dele: (state, action) => {
             state.list = state.list.filter(item => item.uuid !== action.payload.uuid);
+            if (action.payload.uuid === state.curBehaviorUUID) {
+                state.curBehaviorUUID = undefined;
+            }
         },
         edit: (state, action) => {
+            state.list.forEach(item => {
+                if (item.uuid === state.curBehaviorUUID) {
+                    item[action.payload.propsName] = action.payload.propsValue;
+                }
+            });
         },
         setCurrentBehaviorUUID: (state, action) => {
             state.curBehaviorUUID = action.payload.uuid;
@@ -38,6 +46,6 @@ export const apiSlice = createSlice({
 
 export const {
     add, dele, edit, setCurrentBehaviorUUID
-} = apiSlice.actions;
+} = behaviorSlice.actions;
 
-export default apiSlice.reducer;
+export default behaviorSlice.reducer;

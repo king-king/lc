@@ -28,9 +28,9 @@ function List() {
     const rowSelection = {
         // 选择列配置
         type: 'radio',
-        selectedRowKeys: curBehaviorUUID,
+        selectedRowKeys: [curBehaviorUUID],
         onChange: uuid => {
-            dispatch(setCurrentBehaviorUUID({ uuid }));
+            dispatch(setCurrentBehaviorUUID({ uuid: uuid[0] }));
         }
     };
     return (

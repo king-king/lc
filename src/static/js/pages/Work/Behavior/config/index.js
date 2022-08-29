@@ -2,13 +2,16 @@
  * Created by king at 2022-8-24 01:24:53
  * Copyright (c) 2022
  */
+import CommonApi from '../../../../widget/Behavior/component/CommonApi';
+
 // 请求配置
 export const addList = [
     {
         label: '请求',
         list: [{
             label: '通用接口',
-            value: 'common_request'
+            value: 'common_api',
+            EditContent: CommonApi
         }]
     },
     {

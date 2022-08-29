@@ -30,7 +30,7 @@ function Add() {
     const onAdd = () => {
         dispatch(add({
             name: value.label,
-            type: value.label
+            type: value.value
         }));
     };
     return (
