@@ -6,6 +6,7 @@ import CommonApi from '../../../../widget/Behavior/component/CommonApi';
 import CallApi from '../../../../widget/Behavior/component/CallApi';
 import ComponentInteract from '../../../../widget/Behavior/component/ComponentInteract';
 import OpenOuterPage from '../../../../widget/Behavior/component/OpenOuterPage';
+import OpenInnerPage from '../../../../widget/Behavior/component/OpenInnerPage';
 
 // 请求配置
 export const addList = [
@@ -31,6 +32,10 @@ export const addList = [
             label: '打开外部页面',
             value: 'open_outer_page',
             EditContent: OpenOuterPage
+        }, {
+            label: '打开内部页面',
+            value: 'open_innerer_page',
+            EditContent: OpenInnerPage
         }]
     }
 ];
