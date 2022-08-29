@@ -7,6 +7,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { Select, Input } from 'antd';
+import FormItem from '../../../component/FormItem';
 import { edit } from '../../../../redux/slice/behavior';
 import './style.scss';
 
@@ -40,11 +41,9 @@ function Field({
     }
     return (
         <div className='lc-behavior-field'>
-            <div className='lc-behavior-field-label'>{label}</div>
-            <div className='lc-behavior-field-content'>
+            <FormItem label={label} valid={validResult}>
                 {children}
-                <div className={`lc-behavior-field-valid ${validResult?.length ? 'show' : 'hide'}`}>{validResult}</div>
-            </div>
+            </FormItem>
         </div>
     );
 }

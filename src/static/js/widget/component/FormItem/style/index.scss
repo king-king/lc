@@ -1,0 +1,30 @@
+/*
+ * Created by king at 2022-8-29 21:45:29
+ * Copyright (c) 2022
+ */
+
+.lc-form-item {
+    .lc-form-item-content {
+        display: flex;
+        align-items: center;
+        .lc-form-item-content-label {
+            width: 68px;
+            height: 30px;
+            padding-right: 20px;
+            font-size: 12px;
+            line-height: 30px;
+        }
+        .lc-form-item-content-item {
+            flex-grow: 1;
+        }
+    }
+    .lc-form-item-valid {
+        height: 20px;
+        line-height: 20px;
+        font-size: 12px;
+        color: #e62e2f;
+        &.hide {
+            visibility: hidden;
+        }
+    }
+}

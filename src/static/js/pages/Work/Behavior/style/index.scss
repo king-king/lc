@@ -30,5 +30,10 @@
             user-select: none;
         }
     }
-    .lc-work-ground-behavior-edit {}
+    .lc-work-ground-behavior-edit {
+        padding: 20px 20px 0;
+        .lc-work-ground-behavior-edit-content {
+            padding-top: 20px;
+        }
+    }
 }

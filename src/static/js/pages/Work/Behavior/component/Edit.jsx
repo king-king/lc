@@ -5,7 +5,10 @@
 
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Typography } from 'antd';
 import { addList } from '../config/index';
+
+const { Title } = Typography;
 
 function Edit() {
     const curBehaviorUUID = useSelector(state => state.behavior.curBehaviorUUID);
@@ -23,14 +26,15 @@ function Edit() {
             });
         });
     }
-    return (
-        <div className='lc-work-ground-behavior-edit'>
-            <div>{`${label}-属性配置`}</div>
-            <div>
-                {content}
+    return curBehaviorUUID
+        ? (
+            <div className='lc-work-ground-behavior-edit'>
+                <Title className='lc-work-ground-behavior-edit-title' level={5}>{`${label}-属性配置`}</Title>
+                <div className='lc-work-ground-behavior-edit-content'>
+                    {content}
+                </div>
             </div>
-        </div>
-    );
+        ) : undefined;
 }
 
 export default React.memo(Edit);
