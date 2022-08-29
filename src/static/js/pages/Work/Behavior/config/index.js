@@ -39,8 +39,8 @@ export const editTableColumns = [
         render: text => text || '--'
     }, {
         title: '类型',
-        dataIndex: 'type',
-        key: 'type',
+        dataIndex: 'typeName',
+        key: 'typeName',
         width: 100,
         render: text => text || '--'
     }, {
