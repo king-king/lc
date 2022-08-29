@@ -4,10 +4,14 @@
  */
 
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 function Edit() {
+    const curBehaviorUUID = useSelector(state => state.behavior.curBehaviorUUID);
     return (
-        <div className='lc-work-ground-behavior-edit' />
+        <div className='lc-work-ground-behavior-edit'>
+            {curBehaviorUUID}
+        </div>
     );
 }
 

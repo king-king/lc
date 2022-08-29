@@ -31,7 +31,7 @@ export const apiSlice = createSlice({
         edit: (state, action) => {
         },
         setCurrentBehaviorUUID: (state, action) => {
-            state.curUUID = action.payload;
+            state.curBehaviorUUID = action.payload.uuid;
         }
     }
 });

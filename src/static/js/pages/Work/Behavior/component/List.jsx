@@ -6,11 +6,12 @@
 import React from 'react';
 import { Table, Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { dele } from '../../../../redux/slice/behavior';
+import { dele, setCurrentBehaviorUUID } from '../../../../redux/slice/behavior';
 import { editTableColumns } from '../config';
 
 function List() {
     const dispatch = useDispatch();
+    const curBehaviorUUID = useSelector(state => state.behavior.curBehaviorUUID);
     const dataSource = useSelector(state => state.behavior.list).map(line => ({
         key: line.uuid,
         ...line
@@ -24,9 +25,17 @@ function List() {
             <Button type='link' onClick={() => deleteBehavior(record.uuid)}>删除</Button>
         </div>
     );
+    const rowSelection = {
+        // 选择列配置
+        type: 'radio',
+        selectedRowKeys: curBehaviorUUID,
+        onChange: uuid => {
+            dispatch(setCurrentBehaviorUUID({ uuid }));
+        }
+    };
     return (
         <div className='lc-work-ground-behavior-list'>
-            <Table className='lc-word-ground-api-table' dataSource={dataSource} columns={editTableColumns} size='small' pagination={false} />
+            <Table className='lc-word-ground-api-table' dataSource={dataSource} columns={editTableColumns} rowSelection={rowSelection} size='small' pagination={false} />
         </div>
     );
 }
