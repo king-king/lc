@@ -37,7 +37,7 @@ function Field({
             </Select>
         );
     } else if (type === 'input') {
-        children = <Input onChange={e => onChange(e.target.value)} value={curBahavior.name} />;
+        children = <Input status={validResult?.length ? 'error' : undefined} onChange={e => onChange(e.target.value)} value={curBahavior.name} />;
     }
     return (
         <div className='lc-behavior-field'>
