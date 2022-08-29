@@ -32,22 +32,26 @@ export const editTableColumns = [
         title: '名称',
         dataIndex: 'name',
         key: 'name',
-        width: 100
+        width: 100,
+        render: text => text || '--'
     }, {
         title: '类型',
         dataIndex: 'type',
         key: 'type',
-        width: 100
+        width: 100,
+        render: text => text || '--'
     }, {
         title: '提供者',
         dataIndex: 'provider',
         key: 'provider',
-        width: 100
+        width: 100,
+        render: text => text || '--'
     }, {
         title: '消费者',
         dataIndex: 'consumer',
         key: 'consumer',
-        width: 100
+        width: 100,
+        render: text => text || '--'
     }, {
         title: '操作',
         dataIndex: 'process',

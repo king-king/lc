@@ -26,6 +26,7 @@ export const apiSlice = createSlice({
             });
         },
         dele: (state, action) => {
+            state.list = state.list.filter(item => item.uuid !== action.payload.uuid);
         },
         edit: (state, action) => {
         },
