@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import vtree from '../slice/vtree';
-import api from '../slice/api';
+import behavior from '../slice/behavior';
 import page from '../slice/page';
 import business from '../slice/business';
 
@@ -9,6 +9,6 @@ export default configureStore({
         page,
         business,
         vtree,
-        api
+        behavior
     }
 });
