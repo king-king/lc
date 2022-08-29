@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
-import { blockPlot } from '../../../tools/widget';
+import { blockPlot } from '../../../../tools/widget';
 
 function Column({ left, right }) {
     return (

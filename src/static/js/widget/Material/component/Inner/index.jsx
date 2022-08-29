@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 import Field from '../../Edit/Field';
-import { blockPlot } from '../../../tools/widget';
+import { blockPlot } from '../../../../tools/widget';
 
 function Inner({ children, bgColor }) {
     return (

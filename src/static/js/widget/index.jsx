@@ -1,6 +1,6 @@
-import Inner from './Material/Inner';
-import Column from './Material/Column';
-import Card from './Material/Card';
+import Inner from './Material/component/Inner';
+import Column from './Material/component/Column';
+import Card from './Material/component/Card';
 
 // 实际的组件
 export const widgetSet = { Inner, Column, Card };
