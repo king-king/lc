@@ -22,6 +22,9 @@ function Work() {
                     <CustomLink to='/work/behavior'>
                         <Tooltip title='创建动作' placement='right'><div className='lc-work-ground-icon-behavior' /></Tooltip>
                     </CustomLink>
+                    <CustomLink to='/work/tree'>
+                        <Tooltip title='组件树' placement='right'><div className='lc-work-ground-icon-tree' /></Tooltip>
+                    </CustomLink>
                 </div>
                 <Outlet />
             </div>
