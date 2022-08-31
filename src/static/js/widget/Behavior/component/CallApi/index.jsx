@@ -19,4 +19,8 @@ CallApi.propTypes = {
 };
 CallApi.defaultProps = {
 };
-export default React.memo(CallApi);
+export default {
+    Component: React.memo(CallApi),
+    defaultParams: {
+    }
+};

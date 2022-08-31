@@ -16,19 +16,23 @@ function Add() {
     const [value, setValue] = useState({});
     const onRadioChange = item => {
         const curValue = { value: item.target.value };
-        let curLabel;
+        let curItem;
         addList.forEach(block => {
             block.list.forEach(bItem => {
                 if (bItem.value === item.target.value) {
-                    curLabel = bItem.label;
+                    curItem = bItem;
                 }
             });
         });
-        curValue.label = curLabel;
+        curValue.label = curItem.label;
+        curValue.defaultParams = curItem.defaultParams;
         setValue(curValue);
     };
     const onAdd = () => {
         dispatch(add({
+            // 根据类型配置一些默认值
+            ...value.defaultParams,
+            id: value.value,
             name: value.label,
             type: value.value,
             typeName: value.label

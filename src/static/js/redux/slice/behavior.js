@@ -21,6 +21,7 @@ export const behaviorSlice = createSlice({
             const uuid = uuidv4();
             state.list.push({
                 ...action.payload,
+                id: `${action.payload.id}-${state.list.length}`,
                 name: `${action.payload.name}-${state.list.length}`,
                 uuid
             });

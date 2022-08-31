@@ -15,7 +15,8 @@ export const addList = [
         list: [{
             label: '通用接口',
             value: 'common_api',
-            EditContent: CommonApi
+            EditContent: CommonApi.Component,
+            defaultParams: CommonApi.defaultParams
         }]
     },
     {
@@ -23,19 +24,23 @@ export const addList = [
         list: [{
             label: '组件交互',
             value: 'component_interact',
-            EditContent: ComponentInteract
+            EditContent: ComponentInteract.Component,
+            defaultParams: ComponentInteract.defaultParams
         }, {
             label: '发送请求',
             value: 'call_api',
-            EditContent: CallApi
+            EditContent: CallApi.Component,
+            defaultParams: CallApi.defaultParams
         }, {
             label: '打开外部页面',
             value: 'open_outer_page',
-            EditContent: OpenOuterPage
+            EditContent: OpenOuterPage.Component,
+            defaultParams: OpenOuterPage.defaultParams
         }, {
             label: '打开内部页面',
             value: 'open_innerer_page',
-            EditContent: OpenInnerPage
+            EditContent: OpenInnerPage.Component,
+            defaultParams: OpenInnerPage.defaultParams
         }]
     }
 ];

@@ -19,4 +19,8 @@ OpenOuterPage.propTypes = {
 };
 OpenOuterPage.defaultProps = {
 };
-export default React.memo(OpenOuterPage);
+export default {
+    Component: React.memo(OpenOuterPage),
+    defaultParams: {
+    }
+};

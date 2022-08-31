@@ -19,4 +19,9 @@ ComponentInteract.propTypes = {
 };
 ComponentInteract.defaultProps = {
 };
-export default React.memo(ComponentInteract);
+
+export default {
+    Component: React.memo(ComponentInteract),
+    defaultParams: {
+    }
+};

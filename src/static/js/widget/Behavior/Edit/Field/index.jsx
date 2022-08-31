@@ -6,13 +6,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { Select, Input } from 'antd';
+import { Select, Input, Radio } from 'antd';
 import FormItem from '../../../component/FormItem';
 import { edit } from '../../../../redux/slice/behavior';
 import './style.scss';
 
 function Field({
-    type, data = [], label, name, valid
+    type, data = [], label, name, valid, placeholder, addonBefore
 }) {
     const [validResult, setValidResult] = useState();
     const dispatch = useDispatch();
@@ -37,7 +37,20 @@ function Field({
             </Select>
         );
     } else if (type === 'input') {
-        children = <Input status={validResult?.length ? 'error' : undefined} onChange={e => onChange(e.target.value)} value={curBahavior.name} />;
+        const config = {
+            status: validResult?.length ? 'error' : undefined,
+            onChange: e => onChange(e.target.value),
+            value: curBahavior[name],
+            placeholder,
+            addonBefore
+        };
+        children = <Input {...config} />;
+    } else if (type === 'radioButon') {
+        children = (
+            <Radio.Group defaultValue={curBahavior.method} buttonStyle='solid' size='small'>
+                {data.map(item => <Radio.Button value={item.value}>{item.label}</Radio.Button>)}
+            </Radio.Group>
+        );
     }
     return (
         <div className='lc-behavior-field'>
@@ -53,10 +66,14 @@ Field.propTypes = {
     name: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
-    valid: PropTypes.func
+    valid: PropTypes.func,
+    placeholder: PropTypes.string,
+    addonBefore: PropTypes.string
 };
 Field.defaultProps = {
     data: [],
-    valid: () => { }
+    valid: () => { },
+    placeholder: '',
+    addonBefore: ''
 };
 export default Field;

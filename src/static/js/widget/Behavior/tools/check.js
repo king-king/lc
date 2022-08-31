@@ -3,19 +3,22 @@
  * Copyright (c) 2022
  */
 
-export const validName = (value, list, curBehaviorUUID) => {
+export const validRepeat = (key, name) => (value, list, curBehaviorUUID) => {
     // 行动的名称不能重复
     let result;
     if (value.length === 0) {
-        result = '名称不能为空';
+        result = `${name}不能为空`;
     } else {
         list.forEach(item => {
             if (item.uuid !== curBehaviorUUID) {
-                if (item.name === value) {
-                    result = '名称不能重复';
+                if (item[key] === value) {
+                    result = `${name}不能重复`;
                 }
             }
         });
     }
     return result;
 };
+
+export const validName = validRepeat('name', '名称');
+export const validId = validRepeat('id', 'id');

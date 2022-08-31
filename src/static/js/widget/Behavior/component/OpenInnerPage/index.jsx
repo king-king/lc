@@ -19,4 +19,9 @@ OpenInnerPage.propTypes = {
 };
 OpenInnerPage.defaultProps = {
 };
-export default React.memo(OpenInnerPage);
+
+export default {
+    Component: React.memo(OpenInnerPage),
+    defaultParams: {
+    }
+};
