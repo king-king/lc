@@ -8,6 +8,7 @@ import { Input, Tooltip, Button } from 'antd';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
 import FormItem from '../../../component/FormItem';
+import './style';
 
 function CommonApiReturnValue() {
     const [list, setList] = useState([]);
@@ -21,6 +22,7 @@ function CommonApiReturnValue() {
         <FormItem label='返回值'>
             {list.map((item, index) => (
                 <Input
+                    className='common-api-return-value'
                     key={item.key}
                     value={`${item.name}（${item.key}）`}
                     suffix={(

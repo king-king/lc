@@ -49,7 +49,7 @@ function Field({
     } else if (type === 'radioButon') {
         children = (
             <Radio.Group defaultValue={curBahavior.method} buttonStyle='solid' size='small'>
-                {data.map(item => <Radio.Button value={item.value}>{item.label}</Radio.Button>)}
+                {data.map(item => <Radio.Button key={item.value} value={item.value}>{item.label}</Radio.Button>)}
             </Radio.Group>
         );
     } else if (type === 'multipleSelect') {
