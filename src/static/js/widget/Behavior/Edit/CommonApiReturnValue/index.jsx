@@ -68,18 +68,20 @@ function CommonApiReturnValue() {
     return (
         <FormItem label='返回值'>
             {list.map((item, index) => (
-                <Popover key={item.uuid} title='Title' trigger='click' content={editContent(item)}>
-                    <Input
-                        className='common-api-return-value'
-                        value={`${item.name}（${item.key}）`}
-                        suffix={(
-                            <div>
-                                <Tooltip title='删除'>
-                                    <DeleteOutlined style={{ color: 'rgba(0,0,0,.45)' }} onClick={() => { onDelete(index); }} />
-                                </Tooltip>
-                            </div>
-                        )}
-                    />
+                <Popover key={item.uuid} placement='left' title='编辑' mouseEnterDelay={1} trigger='hover' content={editContent(item)}>
+                    <div>
+                        <Input
+                            className='common-api-return-value'
+                            value={`${item.name}（${item.key}）`}
+                            suffix={(
+                                <div>
+                                    <Tooltip title='删除'>
+                                        <DeleteOutlined style={{ color: 'rgba(0,0,0,.45)' }} onClick={() => { onDelete(index); }} />
+                                    </Tooltip>
+                                </div>
+                            )}
+                        />
+                    </div>
                 </Popover>
             ))}
             <Button size='small' onClick={add}>添加</Button>
