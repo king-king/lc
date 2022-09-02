@@ -39,6 +39,7 @@ function Field({
         );
     } else if (type === 'input') {
         const config = {
+            size: 'small',
             status: validResult?.length ? 'error' : undefined,
             onChange: e => onChange(e.target.value),
             value: curBahavior[name],
@@ -48,13 +49,13 @@ function Field({
         children = <Input {...config} />;
     } else if (type === 'radioButon') {
         children = (
-            <Radio.Group defaultValue={curBahavior.method} buttonStyle='solid' size='small'>
+            <Radio.Group size='small' defaultValue={curBahavior.method} buttonStyle='solid' size='small'>
                 {data.map(item => <Radio.Button key={item.value} value={item.value}>{item.label}</Radio.Button>)}
             </Radio.Group>
         );
     } else if (type === 'multipleSelect') {
         children = (
-            <Select defaultValue={curBahavior.filter} onChange={onChange} mode='multiple' style={{ width: '100%' }} maxTagCount='responsive' allowClear>
+            <Select size='small' defaultValue={curBahavior.filter} onChange={onChange} mode='multiple' style={{ width: '100%' }} maxTagCount='responsive' allowClear>
                 {data.map(item => <Select.Option key={item.value} value={item.value}>{item.label}</Select.Option>)}
             </Select>
         );

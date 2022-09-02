@@ -6,9 +6,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style';
 
-function FormItem({ label, children, valid }) {
+function FormItem({
+    label, children, className, valid
+}) {
     return (
-        <div className='lc-form-item'>
+        <div className={`lc-form-item ${className}`}>
             <div className='lc-form-item-content'>
                 <div className='lc-form-item-content-label'>{label}</div>
                 <div className='lc-form-item-content-item'>{children}</div>
@@ -21,11 +23,13 @@ function FormItem({ label, children, valid }) {
 FormItem.propTypes = {
     label: PropTypes.string,
     children: PropTypes.any,
-    valid: PropTypes.string
+    valid: PropTypes.string,
+    className: PropTypes.string
 };
 FormItem.defaultProps = {
     label: '',
     children: '',
-    valid: ''
+    valid: '',
+    className: ''
 };
 export default React.memo(FormItem);
