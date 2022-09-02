@@ -5,6 +5,8 @@
 
 import React from 'react';
 import Field from '../../Edit/Field';
+import FilterField from '../../Edit/FilterField';
+import CommonApiReturnValue from '../../Edit/CommonApiReturnValue';
 import { validName, validId } from '../../tools/check';
 
 function CommonApi() {
@@ -20,6 +22,9 @@ function CommonApi() {
                 value: 'post',
                 label: 'post'
             }]
+        },
+        filter: {
+
         }
     };
     return (
@@ -28,6 +33,8 @@ function CommonApi() {
             <Field label='接口id' type='input' valid={validId} name='id' />
             <Field label='url' type='input' name='url' placeholder='请输入请求的url' addonBefore='//' />
             <Field {...config.method} />
+            <FilterField />
+            <CommonApiReturnValue />
         </div>
     );
 }
@@ -39,6 +46,7 @@ CommonApi.defaultProps = {
 export default {
     Component: React.memo(CommonApi),
     defaultParams: {
-        method: 'get'
+        method: 'get',
+        filter: []
     }
 };

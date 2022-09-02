@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Select, Input, Radio } from 'antd';
 import FormItem from '../../../component/FormItem';
 import { edit } from '../../../../redux/slice/behavior';
+import useCurBehavior from '../../tools/useCurBehavior';
 import './style.scss';
 
 function Field({
@@ -18,7 +19,7 @@ function Field({
     const dispatch = useDispatch();
     const list = useSelector(state => state.behavior.list);
     const curBehaviorUUID = useSelector(state => state.behavior.curBehaviorUUID);
-    const curBahavior = list.find(item => item.uuid === curBehaviorUUID);
+    const curBahavior = useCurBehavior();
     const onChange = value => {
         const check = valid(value, list, curBehaviorUUID);
         setValidResult(check);
@@ -50,6 +51,12 @@ function Field({
             <Radio.Group defaultValue={curBahavior.method} buttonStyle='solid' size='small'>
                 {data.map(item => <Radio.Button value={item.value}>{item.label}</Radio.Button>)}
             </Radio.Group>
+        );
+    } else if (type === 'multipleSelect') {
+        children = (
+            <Select defaultValue={curBahavior.filter} onChange={onChange} mode='multiple' style={{ width: '100%' }} maxTagCount='responsive' allowClear>
+                {data.map(item => <Select.Option key={item.value} value={item.value}>{item.label}</Select.Option>)}
+            </Select>
         );
     }
     return (
