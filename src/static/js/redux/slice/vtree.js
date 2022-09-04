@@ -22,7 +22,7 @@ export const counterSlice = createSlice({
             const {
                 melon, type, widgetUUID, position, parentUUID, targetPlot
             } = action.payload;
-            if (melon.type === widgetKind.dataEntry.type) {
+            if (melon.widget.type === widgetKind.dataEntry.type) {
                 // 如果是数据输入型，则需要添加$var属性，以便可以将组件的onchange与状态值关联起来
                 melon.$var = uuidv4();
                 state.varList.push({

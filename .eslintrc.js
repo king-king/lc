@@ -11,6 +11,7 @@ module.exports = {
         describe: true
     },
     rules: {
+        'no-console': 1,
         'react/forbid-prop-types': 0,
         'react/prop-types': 0,
         'react/destructuring-assignment': 0,
