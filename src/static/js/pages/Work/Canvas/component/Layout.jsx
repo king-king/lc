@@ -52,7 +52,7 @@ function Layout() {
     return (
         <div className='lc-work-ground-component-layout-wrapper' ref={layoutEl}>
             <div className='lc-work-ground-component-layout' data-id='lc-work-ground-component-layout'>
-                {content}
+                {content?.length ? content : <div className='lc-work-ground-component-layout-empty'>请拖入组件</div>}
             </div>
         </div>
     );

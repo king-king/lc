@@ -10,13 +10,24 @@
         background-color: white;
         height: 100%;
         border-right: 1px solid rgb(234, 235, 236);
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding-top: 20px;
         .lc-work-ground-component-item {
-            margin: 10px;
-            background-color: #ae9322;
-            display: inline-block;
+            height: 90px;
             cursor: pointer;
             padding: 3px 10px;
             user-select: none;
+            .lc-work-ground-component-item-icon {
+                width: 30px;
+                height: 30px;
+                margin: auto;
+            }
+            .lc-work-ground-component-item-name {
+                text-align: center;
+                margin-top: 10px;
+                font-size: 12px;
+            }
         }
     }
     .lc-work-ground-component-layout-wrapper {
@@ -27,7 +38,13 @@
         .lc-work-ground-component-layout {
             background-color: white;
             position: relative;
-            height: 100%;
+            .lc-work-ground-component-layout-empty {
+                user-select: none;
+                background-color: white;
+                height: 100px;
+                line-height: 100px;
+                text-align: center;
+            }
         }
     }
     .lc-work-ground-component-config {

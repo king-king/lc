@@ -1,3 +1,4 @@
+// 组件列表
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
@@ -85,8 +86,15 @@ function ComListItem({ widget }) {
         inputEl.current.addEventListener('mousedown', downMove);
         // eslint-disable-next-line
     }, []);
+    const iconStyle = {
+        background: `url(${widget.icon}) center center no-repeat`,
+        backgroundSize: 'contain'
+    };
     return (
-        <div ref={inputEl} className='lc-work-ground-component-item'>{widget.name}</div>
+        <div ref={inputEl} className='lc-work-ground-component-item'>
+            <div className='lc-work-ground-component-item-icon' style={iconStyle} />
+            <div className='lc-work-ground-component-item-name'>{widget.name}</div>
+        </div>
     );
 }
 
