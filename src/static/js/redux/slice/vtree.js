@@ -5,7 +5,7 @@ export const counterSlice = createSlice({
     // name影响的是action.type的取值
     name: 'vtree',
     initialState: {
-        value: [],
+        widgetTree: [],
         // 当前选中的组件uuid
         curWidgetUUID: ''
     },
@@ -15,10 +15,10 @@ export const counterSlice = createSlice({
                 melon, type, widgetUUID, position, parentUUID, targetPlot
             } = action.payload;
             if (type === 'canvas') {
-                state.value.push(melon);
+                state.widgetTree.push(melon);
             } else if (type === 'widget') {
                 // 落在组件的前后
-                visitVTree(state.value, (node, index, list) => {
+                visitVTree(state.widgetTree, (node, index, list) => {
                     if (node.uuid === widgetUUID) {
                         insertArray(list, position === 'before' ? index : index + 1, melon);
                         return true;
@@ -28,7 +28,7 @@ export const counterSlice = createSlice({
             } else {
                 // 槽位
                 // 如果有父元素就添加到父元素节点上
-                visitVTree(state.value, node => {
+                visitVTree(state.widgetTree, node => {
                     if (node.uuid === parentUUID) {
                         if (node?.[targetPlot]?.length) {
                             node[targetPlot].push(melon);
@@ -46,7 +46,7 @@ export const counterSlice = createSlice({
                 state.curWidgetUUID = undefined;
             }
             // 处理删除
-            visitVTree(state.value, (node, index, list) => {
+            visitVTree(state.widgetTree, (node, index, list) => {
                 if (node.uuid === action.payload.uuid) {
                     deleteArray(list, index);
                     return true;
@@ -55,7 +55,7 @@ export const counterSlice = createSlice({
             });
         },
         editProps: (state, action) => {
-            visitVTree(state.value, node => {
+            visitVTree(state.widgetTree, node => {
                 if (node.uuid === state.curWidgetUUID) {
                     node.widget.props[action.payload.propsName] = action.payload.propsValue;
                     return true;

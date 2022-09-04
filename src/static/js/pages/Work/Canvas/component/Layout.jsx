@@ -12,7 +12,7 @@ function Layout() {
     const content = useRenderCanvasContent();
     const layoutEl = useRef(null);
     const dispatch = useDispatch();
-    const vtree = useSelector(state => state.vtree.value);
+    const vtree = useSelector(state => state.vtree.widgetTree);
     useEffect(() => {
         const el = layoutEl.current;
         const process = ce => {

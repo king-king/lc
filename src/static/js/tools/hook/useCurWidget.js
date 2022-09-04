@@ -9,7 +9,7 @@ import { visitVTree } from '../visit';
 
 export default () => {
     const curWidgetUUID = useSelector(state => state.vtree.curWidgetUUID);
-    const vtree = useSelector(state => state.vtree.value);
+    const vtree = useSelector(state => state.vtree.widgetTree);
     let widget;
     visitVTree(vtree, node => {
         if (node.uuid === curWidgetUUID) {

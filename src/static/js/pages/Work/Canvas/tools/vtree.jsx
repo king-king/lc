@@ -8,7 +8,7 @@ import { widgetSet } from '../../../../widget/Material';
 import DomGetter from '../component/DomGetter';
 
 export const useRenderCanvasContent = () => {
-    const vtree = useSelector(state => state.vtree.value);
+    const vtree = useSelector(state => state.vtree.widgetTree);
     const render = nodes => nodes.map(({
         x, y, uuid, widget, ...other
     }) => {
