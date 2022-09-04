@@ -3,7 +3,7 @@
  * Copyright (c) 2022
  */
 import axios from 'axios';
-import { createSlice, current } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 export const pageSlice = createSlice({
     // name影响的是action.type的取值
