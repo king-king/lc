@@ -5,7 +5,7 @@
 
 // 组件
 import Inner from './component/Inner';
-import Column from './component/Column';
+import Grid from './component/Grid';
 import Section from './component/Section';
 import Table from './component/Table';
 import Input from './component/Input';
@@ -25,7 +25,7 @@ import title from './image/title.svg';
 // 实际的组件
 export const widgetSet = {
     Inner,
-    Column,
+    Grid,
     Section,
     Table,
     // 录入
@@ -52,7 +52,7 @@ export const widgetList = [
             }),
             widget({
                 name: '两列布局',
-                component: 'Column',
+                component: 'Grid',
                 icon: grid
             })
         ]
@@ -72,7 +72,7 @@ export const widgetList = [
                 icon: select
             }),
             widget({
-                name: '下拉框',
+                name: '日期',
                 component: 'DatePicker',
                 icon: datepicker
             })
