@@ -10,6 +10,7 @@ export const counterSlice = createSlice({
         widgetTree: [],
         // 当前选中的组件uuid
         curWidgetUUID: '',
+        // 存放变量，输入组件产生的以及接口请求返回的，都存放在这里
         varList: [],
         actionList: [],
         curActionUUID: ''
