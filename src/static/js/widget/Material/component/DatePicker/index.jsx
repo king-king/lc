@@ -1,16 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { DatePicker } from 'antd';
 import './style.scss';
 
-function ProDatePicker({ }) {
+function ProDatePicker({ style }) {
     return (
-        <DatePicker />
+        <DatePicker style={style} />
     );
 }
 
 ProDatePicker.propTypes = {
+    style: PropTypes.object
 };
 ProDatePicker.defaultProps = {
+    style: {
+        width: 280
+    }
 };
 export default {
     component: React.memo(ProDatePicker),

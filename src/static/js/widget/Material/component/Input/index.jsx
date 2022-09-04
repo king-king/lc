@@ -1,16 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Input } from 'antd';
 import './style.scss';
 
-function ProInput({ }) {
+function ProInput({ style }) {
     return (
-        <Input />
+        <Input style={style} />
     );
 }
 
 ProInput.propTypes = {
+    style: PropTypes.object
 };
 ProInput.defaultProps = {
+    style: {
+        width: 280
+    }
 };
 export default {
     component: React.memo(ProInput),

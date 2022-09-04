@@ -1,16 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Select } from 'antd';
 import './style.scss';
 
-function ProSelect({ }) {
+function ProSelect({ style }) {
     return (
-        <Select />
+        <Select style={style} />
     );
 }
 
 ProSelect.propTypes = {
+    style: PropTypes.object
 };
 ProSelect.defaultProps = {
+    style: {
+        width: 280
+    }
 };
 export default {
     component: React.memo(ProSelect),
