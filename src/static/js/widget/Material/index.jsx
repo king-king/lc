@@ -1,6 +1,6 @@
 import Inner from './component/Inner';
 import Column from './component/Column';
-import Card from './component/Card';
+import Section from './component/Section';
 import defaultIcon from './image/default-icon.svg';
 import datepicker from './image/datepicker.svg';
 import grid from './image/grid.svg';
@@ -12,7 +12,7 @@ import text from './image/text.svg';
 import title from './image/title.svg';
 
 // 实际的组件
-export const widgetSet = { Inner, Column, Card };
+export const widgetSet = { Inner, Column, Section };
 
 const widget = arg => ({
     ...arg,
@@ -21,19 +21,31 @@ const widget = arg => ({
 });
 
 export const widgetList = [
-    widget({
-        name: '两列布局',
-        component: 'Column',
-        icon: grid
-    }),
-    widget({
-        name: '内框',
-        component: 'Inner',
-        icon: defaultIcon
-    }),
-    widget({
-        name: '区域',
-        component: 'Card',
-        icon: section
-    })
+    {
+        name: '布局',
+        type: 'layout',
+        children: [
+            widget({
+                name: '区域',
+                component: 'Section',
+                icon: section
+            }),
+            widget({
+                name: '两列布局',
+                component: 'Column',
+                icon: grid
+            })
+        ]
+    },
+    {
+        name: '数据录入',
+        type: 'input',
+        children: [
+            widget({
+                name: '两列布局',
+                component: 'Column',
+                icon: grid
+            })]
+    }
+
 ];

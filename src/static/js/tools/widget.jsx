@@ -12,7 +12,7 @@ export const blockPlot = (parantUUID, plot, text = '槽位') => {
         [DATA_LC_PLOT]: plot,
         [DATA_LC_PLOT_WIDGET_UUID]: parantUUID,
         style: {
-            height: '100%', maxHeight: '50px', color: 'gray', textAlign: 'center'
+            lineHeight: '100px', height: '100px', color: 'gray', textAlign: 'center'
         }
     };
     return <div {...config}>{text}</div>;
