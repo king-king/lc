@@ -11,8 +11,8 @@ import { addList } from '../config/index';
 const { Title } = Typography;
 
 function Edit() {
-    const curBehaviorUUID = useSelector(state => state.behavior.curBehaviorUUID);
-    const list = useSelector(state => state.behavior.list);
+    const curBehaviorUUID = useSelector(state => state.vtree.curActionUUID);
+    const list = useSelector(state => state.vtree.actionList);
     const curBahavior = list.find(item => item.uuid === curBehaviorUUID);
     let content;
     let label;

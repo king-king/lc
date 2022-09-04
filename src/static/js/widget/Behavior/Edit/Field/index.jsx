@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { Select, Input, Radio } from 'antd';
 import FormItem from '../../../component/FormItem';
-import { edit } from '../../../../redux/slice/behavior';
+import { editAction } from '../../../../redux/slice/vtree';
 import useCurBehavior from '../../tools/useCurBehavior';
 import './style.scss';
 
@@ -17,14 +17,14 @@ function Field({
 }) {
     const [validResult, setValidResult] = useState();
     const dispatch = useDispatch();
-    const list = useSelector(state => state.behavior.list);
-    const curBehaviorUUID = useSelector(state => state.behavior.curBehaviorUUID);
+    const list = useSelector(state => state.vtree.actionList);
+    const curBehaviorUUID = useSelector(state => state.vtree.curActionUUID);
     const curBahavior = useCurBehavior();
     const onChange = value => {
         const check = valid(value, list, curBehaviorUUID);
         setValidResult(check);
         if (!check) {
-            dispatch(edit({
+            dispatch(editAction({
                 propsName: name,
                 propsValue: value
             }));
@@ -49,7 +49,7 @@ function Field({
         children = <Input {...config} />;
     } else if (type === 'radioButon') {
         children = (
-            <Radio.Group size='small' defaultValue={curBahavior.method} buttonStyle='solid' size='small'>
+            <Radio.Group size='small' defaultValue={curBahavior.method} buttonStyle='solid'>
                 {data.map(item => <Radio.Button key={item.value} value={item.value}>{item.label}</Radio.Button>)}
             </Radio.Group>
         );

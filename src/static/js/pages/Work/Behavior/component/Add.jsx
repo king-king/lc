@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 import { Typography, Radio, Button } from 'antd';
 import { useDispatch } from 'react-redux';
 import { addList } from '../config/index';
-import { add } from '../../../../redux/slice/behavior';
+import { addAction } from '../../../../redux/slice/vtree';
 
 const { Title } = Typography;
 
@@ -29,7 +29,7 @@ function Add() {
         setValue(curValue);
     };
     const onAdd = () => {
-        dispatch(add({
+        dispatch(addAction({
             // 根据类型配置一些默认值
             ...value.defaultParams,
             id: value.value,

@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import { createSlice } from '@reduxjs/toolkit';
 import { visitVTree, insertArray, deleteArray } from '../../tools/visit';
 
@@ -5,11 +6,16 @@ export const counterSlice = createSlice({
     // name影响的是action.type的取值
     name: 'vtree',
     initialState: {
+        // 组件树
         widgetTree: [],
         // 当前选中的组件uuid
-        curWidgetUUID: ''
+        curWidgetUUID: '',
+        varList: [],
+        actionList: [],
+        curActionUUID: ''
     },
     reducers: {
+        // 组件
         addWidget: (state, action) => {
             const {
                 melon, type, widgetUUID, position, parentUUID, targetPlot
@@ -65,13 +71,40 @@ export const counterSlice = createSlice({
         },
         setCurrentWidgetUUID: (state, action) => {
             state.curWidgetUUID = action.payload;
+        },
+        // 动作
+        addAction: (state, action) => {
+            const uuid = uuidv4();
+            state.actionList.push({
+                ...action.payload,
+                id: `${action.payload.id}-${state.actionList.length}`,
+                name: `${action.payload.name}-${state.actionList.length}`,
+                uuid
+            });
+        },
+        deleteAction: (state, action) => {
+            state.actionList = state.actionList.filter(item => item.uuid !== action.payload.uuid);
+            if (action.payload.uuid === state.curActionUUID) {
+                state.curActionUUID = undefined;
+            }
+        },
+        editAction: (state, action) => {
+            state.actionList.forEach(item => {
+                if (item.uuid === state.curActionUUID) {
+                    item[action.payload.propsName] = action.payload.propsValue;
+                }
+            });
+        },
+        setCurrentActionUUID: (state, action) => {
+            state.curActionUUID = action.payload.uuid;
         }
     }
 });
 
 // Action creators are generated for each case reducer function
 export const {
-    addWidget, deleteWidget, editWidgetProps, setCurrentWidgetUUID
+    addWidget, deleteWidget, editWidgetProps, setCurrentWidgetUUID,
+    addAction, deleteAction, editAction, setCurrentActionUUID
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

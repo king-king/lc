@@ -6,18 +6,18 @@
 import React from 'react';
 import { Table, Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { dele, setCurrentBehaviorUUID } from '../../../../redux/slice/behavior';
+import { deleteAction, setCurrentActionUUID } from '../../../../redux/slice/vtree';
 import { editTableColumns } from '../config';
 
 function List() {
     const dispatch = useDispatch();
-    const curBehaviorUUID = useSelector(state => state.behavior.curBehaviorUUID);
-    const dataSource = useSelector(state => state.behavior.list).map(line => ({
+    const curActionUUID = useSelector(state => state.vtree.curActionUUID);
+    const dataSource = useSelector(state => state.vtree.actionList).map(line => ({
         key: line.uuid,
         ...line
     }));
     const deleteBehavior = uuid => {
-        dispatch(dele({ uuid }));
+        dispatch(deleteAction({ uuid }));
     };
     // 操作列
     editTableColumns[editTableColumns.length - 1].render = (text, record) => (
@@ -28,9 +28,9 @@ function List() {
     const rowSelection = {
         // 选择列配置
         type: 'radio',
-        selectedRowKeys: [curBehaviorUUID],
+        selectedRowKeys: [curActionUUID],
         onChange: uuid => {
-            dispatch(setCurrentBehaviorUUID({ uuid: uuid[0] }));
+            dispatch(setCurrentActionUUID({ uuid: uuid[0] }));
         }
     };
     return (
