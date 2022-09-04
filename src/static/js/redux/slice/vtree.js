@@ -23,7 +23,7 @@ export const counterSlice = createSlice({
                 melon, type, widgetUUID, position, parentUUID, targetPlot
             } = action.payload;
             if (melon.type === widgetKind.dataEntry.type) {
-                // 如果是数据输入型，则需要添加$var属性
+                // 如果是数据输入型，则需要添加$var属性，以便可以将组件的onchange与状态值关联起来
                 melon.$var = uuidv4();
                 state.varList.push({
                     uuid: melon.$var,
@@ -64,6 +64,9 @@ export const counterSlice = createSlice({
             // 处理删除
             visitVTree(state.widgetTree, (node, index, list) => {
                 if (node.uuid === action.payload.uuid) {
+                    // 清理变量
+                    state.varList = state.varList.filter(varItem => varItem.uuid !== node.$var);
+                    // 清理组件
                     deleteArray(list, index);
                     return true;
                 }
