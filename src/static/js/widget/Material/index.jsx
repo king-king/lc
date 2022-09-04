@@ -3,6 +3,7 @@
  * Copyright (c) 2022
  */
 
+import { widgetKind } from '../../config';
 // 组件
 import Inner from './component/Inner';
 import Grid from './component/Grid';
@@ -53,8 +54,9 @@ const widget = arg => ({
 
 export const widgetList = [
     {
-        name: '布局',
-        type: 'layout',
+        // 数据展示
+        name: widgetKind.layout.name,
+        type: widgetKind.layout.type,
         children: [
             widget({
                 name: '区域',
@@ -69,8 +71,9 @@ export const widgetList = [
         ]
     },
     {
-        name: '数据录入',
-        type: 'input',
+        // 数据录入
+        name: widgetKind.dataEntry.name,
+        type: widgetKind.dataEntry.type,
         children: [
             widget({
                 name: '输入框',
@@ -100,8 +103,9 @@ export const widgetList = [
         ]
     },
     {
-        name: '数据展示',
-        type: 'visualize',
+        // 数据展示
+        name: widgetKind.visualize.name,
+        type: widgetKind.visualize.type,
         children: [
             widget({
                 name: '表格',
@@ -110,13 +114,15 @@ export const widgetList = [
             })]
     },
     {
-        name: '通用组件',
-        type: 'normal',
+        // 基础
+        name: widgetKind.basic.name,
+        type: widgetKind.basic.type,
         children: [
             widget({
                 name: '按钮',
                 component: 'Button',
                 icon: button
-            })]
+            })
+        ]
     }
 ];
