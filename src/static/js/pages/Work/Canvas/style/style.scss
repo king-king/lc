@@ -71,6 +71,15 @@
         background-color: white;
         border-left: 1px solid rgb(234, 235, 236);
         height: 100%;
+        .lc-work-ground-component-edit-panel {
+            padding: 20px;
+            &.hide {
+                display: none;
+            }
+            .lc-work-ground-component-edit-panel-com-title {
+                font-weight: bolder;
+            }
+        }
     }
 }
 

@@ -16,9 +16,9 @@ function Edit() {
     }
     // 根据uuid查询出当前选中的组件的uuid
     return (
-        <div>
-            <div>{widget?.widget?.name}</div>
-            <div>
+        <div className={`lc-work-ground-component-edit-panel ${widget ? '' : 'hide'}`}>
+            <div className='lc-work-ground-component-edit-panel-com-title'>{`${widget?.widget?.name}组件`}</div>
+            <div className='lc-work-ground-component-edit-panel-com-props'>
                 {editProps.map(item => item)}
             </div>
         </div>
