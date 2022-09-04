@@ -1,5 +1,5 @@
 import React from 'react';
-import { widgetList } from '../../../widget/index';
+import { widgetList } from '../../../widget/Material';
 import ComListItem from './component/ComListItem';
 import Layout from './component/Layout';
 import Edit from './component/Edit';

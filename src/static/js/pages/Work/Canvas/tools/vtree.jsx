@@ -4,7 +4,7 @@
  */
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { widgetSet } from '../../../../widget/index';
+import { widgetSet } from '../../../../widget/Material';
 import DomGetter from '../component/DomGetter';
 
 export const useRenderCanvasContent = () => {

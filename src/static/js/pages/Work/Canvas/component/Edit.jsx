@@ -6,7 +6,7 @@
 // 编辑组件属性
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { widgetSet } from '../../../../widget';
+import { widgetSet } from '../../../../widget/Material';
 import { visitVTree } from '../../../../tools/visit';
 
 function Edit() {

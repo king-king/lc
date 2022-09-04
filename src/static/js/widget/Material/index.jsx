@@ -1,6 +1,6 @@
-import Inner from './Material/component/Inner';
-import Column from './Material/component/Column';
-import Card from './Material/component/Card';
+import Inner from './component/Inner';
+import Column from './component/Column';
+import Card from './component/Card';
 
 // 实际的组件
 export const widgetSet = { Inner, Column, Card };
@@ -14,7 +14,8 @@ const widget = arg => ({
 export const widgetList = [
     widget({
         name: '两列布局',
-        component: 'Column'
+        component: 'Column',
+        icon: ''
     }),
     widget({
         name: '内框',
