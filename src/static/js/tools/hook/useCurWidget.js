@@ -8,11 +8,11 @@ import { useSelector } from 'react-redux';
 import { visitVTree } from '../visit';
 
 export default () => {
-    const curUUID = useSelector(state => state.vtree.curUUID);
+    const curWidgetUUID = useSelector(state => state.vtree.curWidgetUUID);
     const vtree = useSelector(state => state.vtree.value);
     let widget;
     visitVTree(vtree, node => {
-        if (node.uuid === curUUID) {
+        if (node.uuid === curWidgetUUID) {
             widget = node;
         }
     });

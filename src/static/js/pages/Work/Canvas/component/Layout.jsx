@@ -8,7 +8,7 @@ import { visitVTree } from '../../../../tools/visit';
 import { setCurrentWidgetUUID, dele } from '../../../../redux/slice/vtree';
 
 function Layout() {
-    const curUUID = useSelector(state => state.vtree.curUUID);
+    const curWidgetUUID = useSelector(state => state.vtree.curWidgetUUID);
     const content = useRenderCanvasContent();
     const layoutEl = useRef(null);
     const dispatch = useDispatch();
@@ -26,11 +26,11 @@ function Layout() {
     }, [dispatch]);
 
     useEffect(() => {
-        let curSelectInfo = { uuid: curUUID };
-        if (curUUID) {
+        let curSelectInfo = { uuid: curWidgetUUID };
+        if (curWidgetUUID) {
             // 如果有落点，读取其虚拟树内容
             visitVTree(vtree, node => {
-                if (node.uuid === curUUID) {
+                if (node.uuid === curWidgetUUID) {
                     curSelectInfo = {
                         ...curSelectInfo,
                         ...node
@@ -39,7 +39,7 @@ function Layout() {
             });
             // 获取其真实dom
             visitChildren(layoutEl.current, node => {
-                if (node.dataset[DATA_LC_WIDGET_UUID_KEY] === curUUID) {
+                if (node.dataset[DATA_LC_WIDGET_UUID_KEY] === curWidgetUUID) {
                     curSelectInfo.el = node;
                 }
             });
@@ -48,7 +48,7 @@ function Layout() {
             // onDelete
             dispatch(dele({ uuid: curSelectInfo.uuid }));
         });
-    }, [curUUID, dispatch, vtree]);
+    }, [curWidgetUUID, dispatch, vtree]);
     return (
         <div className='lc-work-ground-component-layout-wrapper' ref={layoutEl}>
             <div className='lc-work-ground-component-layout' data-id='lc-work-ground-component-layout'>

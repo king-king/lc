@@ -7,7 +7,7 @@ export const counterSlice = createSlice({
     initialState: {
         value: [],
         // 当前选中的组件uuid
-        curUUID: ''
+        curWidgetUUID: ''
     },
     reducers: {
         add: (state, action) => {
@@ -42,8 +42,8 @@ export const counterSlice = createSlice({
             }
         },
         dele: (state, action) => {
-            if (state.curUUID === action.payload.uuid) {
-                state.curUUID = undefined;
+            if (state.curWidgetUUID === action.payload.uuid) {
+                state.curWidgetUUID = undefined;
             }
             // 处理删除
             visitVTree(state.value, (node, index, list) => {
@@ -56,7 +56,7 @@ export const counterSlice = createSlice({
         },
         editProps: (state, action) => {
             visitVTree(state.value, node => {
-                if (node.uuid === state.curUUID) {
+                if (node.uuid === state.curWidgetUUID) {
                     node.widget.props[action.payload.propsName] = action.payload.propsValue;
                     return true;
                 }
@@ -64,7 +64,7 @@ export const counterSlice = createSlice({
             });
         },
         setCurrentWidgetUUID: (state, action) => {
-            state.curUUID = action.payload;
+            state.curWidgetUUID = action.payload;
         }
     }
 });
