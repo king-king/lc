@@ -16,13 +16,13 @@ function List() {
         key: line.uuid,
         ...line
     }));
-    const deleteBehavior = uuid => {
+    const onDeleteAction = uuid => {
         dispatch(deleteAction({ uuid }));
     };
     // 操作列
     editTableColumns[editTableColumns.length - 1].render = (text, record) => (
         <div>
-            <Button type='link' onClick={() => deleteBehavior(record.uuid)}>删除</Button>
+            <Button type='link' onClick={() => onDeleteAction(record.uuid)}>删除</Button>
         </div>
     );
     const rowSelection = {
@@ -34,7 +34,7 @@ function List() {
         }
     };
     return (
-        <div className='lc-work-ground-behavior-list'>
+        <div className='lc-work-ground-action-list'>
             <Table className='lc-word-ground-api-table' dataSource={dataSource} columns={editTableColumns} rowSelection={rowSelection} size='small' pagination={false} />
         </div>
     );

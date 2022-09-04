@@ -3,28 +3,28 @@
  * Copyright (c) 2022
  */
 
-.lc-work-ground-behavior {
+.lc-work-ground-action {
     display: grid;
     grid-template-columns: 280px 1fr 380px;
     background-color: white;
-    .lc-work-ground-behavior-add {
+    .lc-work-ground-action-add {
         padding: 10px 15px;
-        .lc-work-ground-behavior-add-title {
+        .lc-work-ground-action-add-title {
             padding: 5px 0;
         }
-        .lc-work-ground-behavior-add-radio {
+        .lc-work-ground-action-add-radio {
             .ant-radio-wrapper {
                 width: 115px;
                 padding: 5px 5px 10px;
                 font-size: 12px;
             }
         }
-        .lc-work-ground-behavior-add-button {
+        .lc-work-ground-action-add-button {
             margin-top: 120px;
             transition: none;
         }
     }
-    .lc-work-ground-behavior-list {
+    .lc-work-ground-action-list {
         border-left: 1px solid rgb(234, 235, 236);
         border-right: 1px solid rgb(234, 235, 236);
         .lc-word-ground-api-table {
@@ -32,9 +32,9 @@
             user-select: none;
         }
     }
-    .lc-work-ground-behavior-edit {
+    .lc-work-ground-action-edit {
         padding: 20px 20px 0;
-        .lc-work-ground-behavior-edit-content {
+        .lc-work-ground-action-edit-content {
             padding-top: 20px;
         }
     }

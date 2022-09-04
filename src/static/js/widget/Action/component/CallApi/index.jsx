@@ -9,7 +9,7 @@ import { validName } from '../../tools/check';
 
 function CallApi() {
     return (
-        <div className='behavior-common-api'>
+        <div className='action-common-api'>
             <Field label='名称' type='input' valid={validName} name='name' />
         </div>
     );

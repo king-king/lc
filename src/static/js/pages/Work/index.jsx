@@ -19,8 +19,8 @@ function Work() {
                     <CustomLink to='/work/canvas'>
                         <Tooltip title='UI布局' placement='right'><div className='lc-work-ground-icon-canvas' /></Tooltip>
                     </CustomLink>
-                    <CustomLink to='/work/behavior'>
-                        <Tooltip title='创建动作' placement='right'><div className='lc-work-ground-icon-behavior' /></Tooltip>
+                    <CustomLink to='/work/action'>
+                        <Tooltip title='创建动作' placement='right'><div className='lc-work-ground-icon-action' /></Tooltip>
                     </CustomLink>
                     <CustomLink to='/work/tree'>
                         <Tooltip title='组件树' placement='right'><div className='lc-work-ground-icon-tree' /></Tooltip>

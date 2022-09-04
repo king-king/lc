@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Select, Input, Radio } from 'antd';
 import FormItem from '../../../component/FormItem';
 import { editAction } from '../../../../redux/slice/vtree';
-import useCurBehavior from '../../tools/useCurBehavior';
+import useCurAction from '../../tools/useCurAction';
 import './style.scss';
 
 function Field({
@@ -18,10 +18,10 @@ function Field({
     const [validResult, setValidResult] = useState();
     const dispatch = useDispatch();
     const list = useSelector(state => state.vtree.actionList);
-    const curBehaviorUUID = useSelector(state => state.vtree.curActionUUID);
-    const curBahavior = useCurBehavior();
+    const curActionUUID = useSelector(state => state.vtree.curActionUUID);
+    const curBahavior = useCurAction();
     const onChange = value => {
-        const check = valid(value, list, curBehaviorUUID);
+        const check = valid(value, list, curActionUUID);
         setValidResult(check);
         if (!check) {
             dispatch(editAction({
@@ -61,7 +61,7 @@ function Field({
         );
     }
     return (
-        <div className='lc-behavior-field'>
+        <div className='lc-action-field'>
             <FormItem label={label} valid={validResult}>
                 {children}
             </FormItem>

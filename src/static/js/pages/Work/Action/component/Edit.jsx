@@ -11,26 +11,26 @@ import { addList } from '../config/index';
 const { Title } = Typography;
 
 function Edit() {
-    const curBehaviorUUID = useSelector(state => state.vtree.curActionUUID);
+    const curActionUUID = useSelector(state => state.vtree.curActionUUID);
     const list = useSelector(state => state.vtree.actionList);
-    const curBahavior = list.find(item => item.uuid === curBehaviorUUID);
+    const curBahavior = list.find(item => item.uuid === curActionUUID);
     let content;
     let label;
-    if (curBehaviorUUID) {
+    if (curActionUUID) {
         addList.forEach(item => {
-            item.list.forEach(({ label: behaviorLabel, value, EditContent }) => {
+            item.list.forEach(({ label: actionLabel, value, EditContent }) => {
                 if (value === curBahavior?.type) {
-                    label = behaviorLabel;
+                    label = actionLabel;
                     content = <EditContent />;
                 }
             });
         });
     }
-    return curBehaviorUUID
+    return curActionUUID
         ? (
-            <div className='lc-work-ground-behavior-edit'>
-                <Title className='lc-work-ground-behavior-edit-title' level={5}>{`${label}-属性配置`}</Title>
-                <div className='lc-work-ground-behavior-edit-content'>
+            <div className='lc-work-ground-action-edit'>
+                <Title className='lc-work-ground-action-edit-title' level={5}>{`${label}-属性配置`}</Title>
+                <div className='lc-work-ground-action-edit-content'>
                     {content}
                 </div>
             </div>

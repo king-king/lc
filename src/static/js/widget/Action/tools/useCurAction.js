@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 // 获取当前被编辑的动作
 export default () => {
     const list = useSelector(state => state.vtree.actionList);
-    const curBehaviorUUID = useSelector(state => state.vtree.curActionUUID);
-    const curBahavior = list.find(item => item.uuid === curBehaviorUUID);
+    const curActionUUID = useSelector(state => state.vtree.curActionUUID);
+    const curBahavior = list.find(item => item.uuid === curActionUUID);
     return curBahavior;
 };

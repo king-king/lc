@@ -2,11 +2,11 @@
  * Created by king at 2022-8-24 01:24:53
  * Copyright (c) 2022
  */
-import CommonApi from '../../../../widget/Behavior/component/CommonApi';
-import CallApi from '../../../../widget/Behavior/component/CallApi';
-import ComponentInteract from '../../../../widget/Behavior/component/ComponentInteract';
-import OpenOuterPage from '../../../../widget/Behavior/component/OpenOuterPage';
-import OpenInnerPage from '../../../../widget/Behavior/component/OpenInnerPage';
+import CommonApi from '../../../../widget/Action/component/CommonApi';
+import CallApi from '../../../../widget/Action/component/CallApi';
+import ComponentInteract from '../../../../widget/Action/component/ComponentInteract';
+import OpenOuterPage from '../../../../widget/Action/component/OpenOuterPage';
+import OpenInnerPage from '../../../../widget/Action/component/OpenInnerPage';
 
 // 请求配置
 export const addList = [

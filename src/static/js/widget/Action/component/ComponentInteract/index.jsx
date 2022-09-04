@@ -7,21 +7,21 @@ import React from 'react';
 import Field from '../../Edit/Field';
 import { validName } from '../../tools/check';
 
-function OpenInnerPage() {
+function ComponentInteract() {
     return (
-        <div className='behavior-common-api'>
+        <div className='action-common-api'>
             <Field label='名称' type='input' valid={validName} name='name' />
         </div>
     );
 }
 
-OpenInnerPage.propTypes = {
+ComponentInteract.propTypes = {
 };
-OpenInnerPage.defaultProps = {
+ComponentInteract.defaultProps = {
 };
 
 export default {
-    Component: React.memo(OpenInnerPage),
+    Component: React.memo(ComponentInteract),
     defaultParams: {
     }
 };

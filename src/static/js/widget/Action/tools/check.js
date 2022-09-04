@@ -3,14 +3,14 @@
  * Copyright (c) 2022
  */
 
-export const validRepeat = (key, name) => (value, list, curBehaviorUUID) => {
+export const validRepeat = (key, name) => (value, list, curActionUUID) => {
     // 行动的名称不能重复
     let result;
     if (value.length === 0) {
         result = `${name}不能为空`;
     } else {
         list.forEach(item => {
-            if (item.uuid !== curBehaviorUUID) {
+            if (item.uuid !== curActionUUID) {
                 if (item[key] === value) {
                     result = `${name}不能重复`;
                 }

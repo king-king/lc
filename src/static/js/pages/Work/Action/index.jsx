@@ -9,9 +9,9 @@ import List from './component/List';
 import Edit from './component/Edit';
 import './style';
 
-function Behavior() {
+function Action() {
     return (
-        <div className='lc-work-ground-behavior'>
+        <div className='lc-work-ground-action'>
             <Add />
             <List />
             <Edit />
@@ -19,4 +19,4 @@ function Behavior() {
     );
 }
 
-export default React.memo(Behavior);
+export default React.memo(Action);

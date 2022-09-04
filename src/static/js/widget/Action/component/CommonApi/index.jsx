@@ -28,7 +28,7 @@ function CommonApi() {
         }
     };
     return (
-        <div className='behavior-common-api'>
+        <div className='action-common-api'>
             <Field label='名称' type='input' valid={validName} name='name' />
             <Field label='接口id' type='input' valid={validId} name='id' />
             <Field label='url' type='input' name='url' placeholder='请输入请求的url' addonBefore='//' />

@@ -6,7 +6,7 @@ import PageWrapper from '../component/PageWrapper';
 import Home from '../pages/Home';
 import Work from '../pages/Work';
 import Canvas from '../pages/Work/Canvas';
-import Behavior from '../pages/Work/Behavior';
+import Action from '../pages/Work/Action';
 import PageList from '../pages/Manage/PageList';
 import BusinessList from '../pages/Manage/BusinessList';
 import PageInsight from '../pages/Manage/PageInsight';
@@ -26,8 +26,8 @@ export default [
                 path: 'canvas',
                 comonent: PageWrapper(Canvas, '配置页面')
             }, {
-                path: 'behavior',
-                comonent: PageWrapper(Behavior, '配置动作')
+                path: 'action',
+                comonent: PageWrapper(Action, '配置动作')
             }
         ]
     }, {

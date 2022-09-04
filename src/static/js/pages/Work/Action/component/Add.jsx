@@ -39,14 +39,14 @@ function Add() {
         }));
     };
     return (
-        <div className='lc-work-ground-behavior-add'>
+        <div className='lc-work-ground-action-add'>
             {addList.map(item => (
                 <div key={item.label}>
-                    <Title className='lc-work-ground-behavior-add-title' level={5}>{item.label}</Title>
-                    <Radio.Group className='lc-work-ground-behavior-add-radio' size='small' options={item.list} onChange={onRadioChange} value={value.value} />
+                    <Title className='lc-work-ground-action-add-title' level={5}>{item.label}</Title>
+                    <Radio.Group className='lc-work-ground-action-add-radio' size='small' options={item.list} onChange={onRadioChange} value={value.value} />
                 </div>
             ))}
-            <Button className='lc-work-ground-behavior-add-button' block disabled={!value.value} onClick={onAdd}>添加</Button>
+            <Button className='lc-work-ground-action-add-button' block disabled={!value.value} onClick={onAdd}>添加</Button>
         </div>
     );
 }
