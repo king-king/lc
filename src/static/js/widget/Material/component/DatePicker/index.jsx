@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { DatePicker } from 'antd';
 import './style.scss';
+import icon from '../../image/datepicker.svg';
+import { widgetKind } from '../../../../config';
 
 function ProDatePicker({ style }) {
     return (
@@ -18,6 +20,9 @@ ProDatePicker.defaultProps = {
     }
 };
 export default {
+    name: '日期',
+    icon,
+    type: widgetKind.dataEntry.type,
     component: React.memo(ProDatePicker),
     // 声明可以触发的事件
     event: [],

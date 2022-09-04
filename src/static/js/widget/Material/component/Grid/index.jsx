@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 import { blockPlot } from '../../../../tools/widget';
+import icon from '../../image/grid.svg';
+import { widgetKind } from '../../../../config';
 
 function Grid({ left, right }) {
     return (
@@ -22,6 +24,9 @@ Grid.defaultProps = {
 };
 
 export default {
+    name: '两列布局',
+    icon,
+    type: widgetKind.layout.type,
     component: React.memo(Grid),
     plots: {
         left: blockPlot,

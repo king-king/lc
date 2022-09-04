@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'antd';
 import './style.scss';
+import icon from '../../image/button.svg';
+import { widgetKind } from '../../../../config';
 
 function ProButton({ children }) {
     return (
@@ -16,6 +18,9 @@ ProButton.defaultProps = {
     children: '按钮'
 };
 export default {
+    name: '按钮',
+    icon,
+    type: widgetKind.basic.type,
     component: React.memo(ProButton),
     // 声明可以触发的事件
     event: [],

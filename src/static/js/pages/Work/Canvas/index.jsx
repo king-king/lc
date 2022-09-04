@@ -16,7 +16,7 @@ function Work() {
                 <Collapse defaultActiveKey={widgetList.map(item => item.type)} expandIconPosition='end'>
                     {
                         widgetList.map(team => (
-                            <Panel key={team.type.toString()} header={team.name} className='lc-work-ground-component-list-panel'>
+                            <Panel key={team.type} header={team.name} className='lc-work-ground-component-list-panel'>
                                 {team.children.map(widget => <ComListItem key={widget.name} widget={{ ...widget }} />)}
                             </Panel>
                         ))

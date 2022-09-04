@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import { createSlice } from '@reduxjs/toolkit';
+import { widgetKind } from '../../config';
 import { visitVTree, insertArray, deleteArray } from '../../tools/visit';
 
 export const counterSlice = createSlice({
@@ -21,6 +22,14 @@ export const counterSlice = createSlice({
             const {
                 melon, type, widgetUUID, position, parentUUID, targetPlot
             } = action.payload;
+            if (melon.type === widgetKind.dataEntry.type) {
+                // 如果是数据输入型，则需要添加$var属性
+                melon.$var = uuidv4();
+                state.varList.push({
+                    uuid: melon.$var,
+                    desc: `${melon.widget.name}状态`
+                });
+            }
             if (type === 'canvas') {
                 state.widgetTree.push(melon);
             } else if (type === 'widget') {

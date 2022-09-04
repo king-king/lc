@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Radio } from 'antd';
 import './style.scss';
+import icon from '../../image/radio.svg';
+import { widgetKind } from '../../../../config';
 
 function ProRadio({ data }) {
     return (
-        // <Radio data={data} />
         <Radio.Group>
             {data.map(item => <Radio value={item.value}>{item.label}</Radio>)}
         </Radio.Group>
@@ -19,6 +20,9 @@ ProRadio.defaultProps = {
     data: [{ value: '1', label: '选项1' }, { value: '2', label: '选项2' }]
 };
 export default {
+    name: '单选框',
+    icon,
+    type: widgetKind.dataEntry.type,
     component: React.memo(ProRadio),
     // 声明可以触发的事件
     event: [],

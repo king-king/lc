@@ -22,8 +22,10 @@ export const DATA_LC_PLOT_WIDGET_UUID_KEY = 'lcPlotWidgetUuid';
  * 组件分类
  */
 export const widgetKind = {
-    layout: { name: '布局', type: Symbol('布局') },
-    basic: { name: '基础', type: Symbol('基础') },
-    visualize: { name: '数据展示', type: Symbol('数据展示') },
-    dataEntry: { name: '数据录入', type: Symbol('数据录入') }
+    layout: { name: '布局', type: 'layout' },
+    basic: { name: '基础', type: 'basic' },
+    dataEntry: { name: '数据录入', type: 'dataEntry' },
+    visualize: { name: '数据展示', type: 'visualize' }
 };
+
+export const widgetKindOrder = ['layout', 'basic', 'dataEntry', 'visualize'];

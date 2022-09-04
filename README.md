@@ -23,7 +23,9 @@
 
 每个物料都应该export出以下字段
 
+* `name`：组件名称（中文）
+* `icon`：组件图标
 * `component`
 * `plots`
 * `editProps`
-*
+* `type`：组件类型

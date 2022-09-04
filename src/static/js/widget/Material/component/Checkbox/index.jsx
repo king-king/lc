@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Checkbox } from 'antd';
 import './style.scss';
+import icon from '../../image/checkbox.svg';
+import { widgetKind } from '../../../../config';
 
 function ProCheckbox({ data }) {
     return (
@@ -16,6 +18,9 @@ ProCheckbox.defaultProps = {
     data: [{ value: '1', label: '选项1' }, { value: '2', label: '选项2' }]
 };
 export default {
+    name: '多选框',
+    icon,
+    type: widgetKind.dataEntry.type,
     component: React.memo(ProCheckbox),
     // 声明可以触发的事件
     event: [],

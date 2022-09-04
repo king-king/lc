@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Input } from 'antd';
 import './style.scss';
+import icon from '../../image/input.svg';
+import { widgetKind } from '../../../../config';
 
 function ProInput({ style }) {
     return (
@@ -18,6 +20,9 @@ ProInput.defaultProps = {
     }
 };
 export default {
+    name: '输入框',
+    icon,
+    type: widgetKind.dataEntry.type,
     component: React.memo(ProInput),
     // 声明可以触发的事件
     event: [],
