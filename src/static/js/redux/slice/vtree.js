@@ -27,6 +27,7 @@ export const counterSlice = createSlice({
                 melon.$var = uuidv4();
                 state.varList.push({
                     uuid: melon.$var,
+                    type: 'widgetValue',
                     desc: `${melon.widget.name}状态`
                 });
             }
