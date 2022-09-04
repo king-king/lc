@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import {
     isInCavans, element, highlightDropshadow, getWidgetOrPlot, getPositionInfo
 } from '../../../../tools/dom';
-import { add } from '../../../../redux/slice/vtree';
+import { addWidget } from '../../../../redux/slice/vtree';
 import { melon } from '../../../../tools/melon';
 import { DATA_LC_WIDGET_UUID_KEY, DATA_LC_PLOT_KEY, DATA_LC_PLOT_WIDGET_UUID_KEY } from '../../../../config/index';
 
@@ -76,7 +76,7 @@ function ComListItem({ widget }) {
                         // 落在了画布上
                         payload.type = 'canvas';
                     }
-                    dispatch(add(payload));
+                    dispatch(addWidget(payload));
                 }
                 highlightCanvas.remove();
             };

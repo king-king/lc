@@ -10,7 +10,7 @@ export const counterSlice = createSlice({
         curWidgetUUID: ''
     },
     reducers: {
-        add: (state, action) => {
+        addWidget: (state, action) => {
             const {
                 melon, type, widgetUUID, position, parentUUID, targetPlot
             } = action.payload;
@@ -41,7 +41,7 @@ export const counterSlice = createSlice({
                 });
             }
         },
-        dele: (state, action) => {
+        deleteWidget: (state, action) => {
             if (state.curWidgetUUID === action.payload.uuid) {
                 state.curWidgetUUID = undefined;
             }
@@ -54,7 +54,7 @@ export const counterSlice = createSlice({
                 return false;
             });
         },
-        editProps: (state, action) => {
+        editWidgetProps: (state, action) => {
             visitVTree(state.widgetTree, node => {
                 if (node.uuid === state.curWidgetUUID) {
                     node.widget.props[action.payload.propsName] = action.payload.propsValue;
@@ -71,7 +71,7 @@ export const counterSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const {
-    add, dele, editProps, setCurrentWidgetUUID
+    addWidget, deleteWidget, editWidgetProps, setCurrentWidgetUUID
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

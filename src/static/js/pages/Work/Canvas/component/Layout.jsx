@@ -5,7 +5,7 @@ import { useRenderCanvasContent } from '../tools/vtree';
 import { DATA_LC_WIDGET_UUID_KEY } from '../../../../config/index';
 import { getClickWidget, highlightDom, visitChildren } from '../../../../tools/dom';
 import { visitVTree } from '../../../../tools/visit';
-import { setCurrentWidgetUUID, dele } from '../../../../redux/slice/vtree';
+import { setCurrentWidgetUUID, deleteWidget } from '../../../../redux/slice/vtree';
 
 function Layout() {
     const curWidgetUUID = useSelector(state => state.vtree.curWidgetUUID);
@@ -46,7 +46,7 @@ function Layout() {
         }
         highlightDom(curSelectInfo, layoutEl.current, () => {
             // onDelete
-            dispatch(dele({ uuid: curSelectInfo.uuid }));
+            dispatch(deleteWidget({ uuid: curSelectInfo.uuid }));
         });
     }, [curWidgetUUID, dispatch, vtree]);
     return (

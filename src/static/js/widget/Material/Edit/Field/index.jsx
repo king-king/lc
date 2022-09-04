@@ -7,7 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { Select } from 'antd';
-import { editProps } from '../../../../redux/slice/vtree';
+import { editWidgetProps } from '../../../../redux/slice/vtree';
 import './style.scss';
 
 function Field({
@@ -16,7 +16,7 @@ function Field({
     const dispatch = useDispatch();
     const onSelectChange = value => {
         // 下拉框的onChange
-        dispatch(editProps({
+        dispatch(editWidgetProps({
             propsName: name,
             propsValue: value
         }));
