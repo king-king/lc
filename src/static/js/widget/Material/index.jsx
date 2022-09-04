@@ -11,6 +11,10 @@ import Table from './component/Table';
 import Input from './component/Input';
 import Select from './component/Select';
 import DatePicker from './component/DatePicker';
+import Button from './component/Button';
+import Radio from './component/Radio';
+import Checkbox from './component/Checkbox';
+
 // 图标
 import defaultIcon from './image/default-icon.svg';
 import datepicker from './image/datepicker.svg';
@@ -21,6 +25,9 @@ import select from './image/select.svg';
 import table from './image/table.svg';
 import text from './image/text.svg';
 import title from './image/title.svg';
+import button from './image/button.svg';
+import radio from './image/radio.svg';
+import checkbox from './image/checkbox.svg';
 
 // 实际的组件
 export const widgetSet = {
@@ -31,7 +38,11 @@ export const widgetSet = {
     // 录入
     DatePicker,
     Input,
-    Select
+    Select,
+    Radio,
+    Checkbox,
+    // 通用
+    Button
 };
 
 const widget = arg => ({
@@ -75,6 +86,16 @@ export const widgetList = [
                 name: '日期',
                 component: 'DatePicker',
                 icon: datepicker
+            }),
+            widget({
+                name: '单选框',
+                component: 'Radio',
+                icon: radio
+            }),
+            widget({
+                name: '多选框',
+                component: 'Checkbox',
+                icon: checkbox
             })
         ]
     },
@@ -86,6 +107,16 @@ export const widgetList = [
                 name: '表格',
                 component: 'Table',
                 icon: table
+            })]
+    },
+    {
+        name: '通用组件',
+        type: 'normal',
+        children: [
+            widget({
+                name: '按钮',
+                component: 'Button',
+                icon: button
             })]
     }
 ];
