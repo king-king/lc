@@ -3,7 +3,7 @@
  * Copyright (c) 2022
  */
 import axios from 'axios';
-import { createSlice, current } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { url } from '../../config/api';
 
 export const pageSlice = createSlice({
