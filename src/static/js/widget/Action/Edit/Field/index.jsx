@@ -55,7 +55,7 @@ function Field({
         );
     } else if (type === 'multipleSelect') {
         children = (
-            <Select size='small' defaultValue={curBahavior.filter} onChange={onChange} mode='multiple' style={{ width: '100%' }} maxTagCount='responsive' allowClear>
+            <Select size='small' style={{ width: '100%' }} defaultValue={curBahavior.filter} onChange={onChange} mode='multiple' maxTagCount='responsive' allowClear>
                 {data.map(item => <Select.Option key={item.value} value={item.value}>{item.label}</Select.Option>)}
             </Select>
         );

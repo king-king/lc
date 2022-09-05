@@ -6,15 +6,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { Select } from 'antd';
+import { Select, Radio } from 'antd';
+import FormItem from '../../../component/FormItem';
 import { editWidgetProps } from '../../../../redux/slice/vtree';
 import './style.scss';
 
+// TODO:默认值的逻辑还没实现
 function Field({
     type, data, label, name, defaultValue
 }) {
     const dispatch = useDispatch();
-    const onSelectChange = value => {
+    const onValueChange = value => {
         // 下拉框的onChange
         dispatch(editWidgetProps({
             propsName: name,
@@ -24,17 +26,20 @@ function Field({
     let children;
     if (type === 'select') {
         children = (
-            <Select defaultValue={defaultValue || data[0].value} onChange={onSelectChange}>
+            <Select defaultValue={defaultValue || data[0].value} onChange={onValueChange} size='small' style={{ width: '100%' }}>
                 {data.map(item => <Select.Option key={item.value} value={item.value}>{item.label}</Select.Option>)}
             </Select>
         );
+    } else if (type === 'radio') {
+        children = (
+            <Radio.Group defaultValue={defaultValue || data[0].value} onChange={e => onValueChange(e.target.value)} size='small' options={data} />
+        );
     }
     return (
-        <div className='lc-field'>
-            <div className='lc-field-label'>{label}</div>
-            <div className='lc-field-content'>
+        <div className='lc-component-field'>
+            <FormItem label={label}>
                 {children}
-            </div>
+            </FormItem>
         </div>
     );
 }
