@@ -56,21 +56,6 @@ export const counterSlice = createSlice({
                     desc: varType.value.desc
                 });
             }
-            // 注入setValue
-            melon.widget.props.setValue = (value, tarVarType) => {
-                // 根据type找到uuid
-                let targetUUID;
-                melon.varList.forEach(varItem => {
-                    if (varItem.type === tarVarType) {
-                        targetUUID = varItem.uuid;
-                    }
-                });
-                state.varList.forEach(varItem => {
-                    if (varItem.uuid === targetUUID) {
-                        varItem.value = { ...value };
-                    }
-                });
-            };
             if (type === 'canvas') {
                 state.widgetTree.push(melon);
             } else if (type === 'widget') {
@@ -157,6 +142,32 @@ export const counterSlice = createSlice({
         },
         setCurrentActionUUID: (state, action) => {
             state.curActionUUID = action.payload.uuid;
+        },
+        // 变量
+        setVar: (state, action) => {
+            // 根据type找到uuid
+            const widgetUUID = action.payload.uuid;
+            const value = action.payload.value;
+            const type = action.payload.type;
+            let targetUUID, widget;
+            visitVTree(state.widgetTree, node => {
+                if (node.uuid === widgetUUID) {
+                    widget = node;
+                    return true;
+                }
+                return false;
+            });
+            // 寻找对应的var
+            widget.varList.forEach(varItem => {
+                if (varItem.type === type) {
+                    targetUUID = varItem.uuid;
+                }
+            });
+            state.varList.forEach(varItem => {
+                if (varItem.uuid === targetUUID) {
+                    varItem.value = { ...value };
+                }
+            });
         }
     }
 });
@@ -164,7 +175,7 @@ export const counterSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const {
     addWidget, deleteWidget, editWidgetProps, setCurrentWidgetUUID,
-    addAction, deleteAction, editAction, setCurrentActionUUID
+    addAction, deleteAction, editAction, setCurrentActionUUID, setVar
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

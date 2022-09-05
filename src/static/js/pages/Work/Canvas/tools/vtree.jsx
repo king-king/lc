@@ -6,6 +6,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { widgetSet } from '../../../../widget/Material';
 import DomGetter from '../component/DomGetter';
+import { setVar } from '../../../../redux/slice/vtree';
 
 export const useRenderCanvasContent = () => {
     const vtree = useSelector(state => state.vtree.widgetTree);
@@ -16,7 +17,8 @@ export const useRenderCanvasContent = () => {
             key: uuid,
             x,
             y,
-            ...widget.props
+            ...widget.props,
+            setValue: (value, type) => { setVar({ uuid, value, type }); }
         };
         const onReady = dom => {
             dom.setAttribute('data-lc-widget-uuid', uuid);
