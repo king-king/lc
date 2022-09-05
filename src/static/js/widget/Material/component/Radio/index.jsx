@@ -1,16 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Radio } from 'antd';
+import Field from '../../Edit/Field';
 import './style.scss';
 import icon from '../../image/radio.svg';
 import { widgetKind } from '../../../../config';
 
-function ProRadio({ data, setValue }) {
+function ProRadio({
+    data, setValue, size, optionType, buttonStyle
+}) {
     const onChange = e => setValue({ value: e.target.value }, 'value');
     return (
-        <Radio.Group onChange={onChange}>
-            {data.map(item => <Radio key={item.value} value={item.value}>{item.label}</Radio>)}
-        </Radio.Group>
+        <Radio.Group
+            onChange={onChange}
+            size={size}
+            options={data}
+            optionType={optionType}
+            buttonStyle={buttonStyle}
+        />
     );
 }
 
@@ -30,5 +37,9 @@ export default {
     plots: {
     },
     // 可以配置的props，用于渲染右侧的编辑栏
-    editProps: []
+    editProps: [
+        <Field key='optionType' name='optionType' label='类型' type='select' data={[{ value: 'default', label: '默认' }, { value: 'button', label: '按钮型' }]} />,
+        <Field key='size' name='size' label='尺寸' type='select' data={[{ value: undefined, label: '默认' }, { value: 'large', label: '大' }, { value: 'middle', label: '中' }, { value: 'small', label: '小' }]} />,
+        <Field key='buttonStyle' name='buttonStyle' label='按钮样式' type='select' data={[{ value: 'outline', label: '描边' }, { value: 'solid', label: '填色' }]} />
+    ]
 };

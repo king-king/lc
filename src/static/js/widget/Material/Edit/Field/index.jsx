@@ -11,7 +11,7 @@ import { editWidgetProps } from '../../../../redux/slice/vtree';
 import './style.scss';
 
 function Field({
-    type, data, label, name
+    type, data, label, name, defaultValue
 }) {
     const dispatch = useDispatch();
     const onSelectChange = value => {
@@ -24,8 +24,8 @@ function Field({
     let children;
     if (type === 'select') {
         children = (
-            <Select defaultValue={data[0].value} onChange={onSelectChange}>
-                {data.map(item => <Select.Option value={item.value}>{item.label}</Select.Option>)}
+            <Select defaultValue={defaultValue || data[0].value} onChange={onSelectChange}>
+                {data.map(item => <Select.Option key={item.value} value={item.value}>{item.label}</Select.Option>)}
             </Select>
         );
     }

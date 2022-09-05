@@ -32,6 +32,7 @@ export const widgetSet = {
 
 const widget = component => ({
     ...widgetSet[component],
+    editProps: undefined,
     props: {},
     plots: widgetSet[component]?.plots ? Object.keys(widgetSet[component].plots) : [],
     component
