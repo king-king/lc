@@ -26,7 +26,7 @@
 * `name`：组件名称（中文）
 * `icon`：组件图标
 * `component`
-* `plots` - `Object`
+* [`plots`] - `Object`
 * `editProps`
 * `type`：组件类型
 * [`onChange`] - `func`：对于`dataEntry`类型的数据，不同的组件抛出的数据格式不同，我们可以用这个函数进行数据的规格化处理，去除差异化。该函数返回一个对象，对象内存储要抛出的值
