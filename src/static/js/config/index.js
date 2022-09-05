@@ -29,3 +29,11 @@ export const widgetKind = {
 };
 
 export const widgetKindOrder = ['layout', 'basic', 'dataEntry', 'visualize'];
+
+// 组件值的类型
+export const varType = {
+    value: {
+        type: 'value',
+        desc: '当前选中的值'
+    }
+};

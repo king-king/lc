@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import { createSlice } from '@reduxjs/toolkit';
-import { widgetKind } from '../../config';
+import { widgetKind, varType } from '../../config';
 import { visitVTree, insertArray, deleteArray } from '../../tools/visit';
 
 export const counterSlice = createSlice({
@@ -22,15 +22,55 @@ export const counterSlice = createSlice({
             const {
                 melon, type, widgetUUID, position, parentUUID, targetPlot
             } = action.payload;
-            if (melon.widget.type === widgetKind.dataEntry.type) {
-                // 如果是数据输入型，则需要添加$var属性，以便可以将组件的onchange与状态值关联起来
-                melon.$var = uuidv4();
-                state.varList.push({
-                    uuid: melon.$var,
-                    type: 'widgetValue',
-                    desc: `${melon.widget.name}状态`
+            // 处理组件的变量值
+            melon.varList = [];
+            let hasValueVar = false;
+            if (melon.widget?.varState?.length) {
+                // 如果物料声明了自己的var，则按其要求生成
+                melon.widget.varState.forEach(varState => {
+                    if (varState.type === 'value') {
+                        hasValueVar = true;
+                    }
+                    const uuid = uuidv4();
+                    melon.varList.push({ uuid, type: varState.type });
+                    state.varList.push({
+                        uuid,
+                        kind: 'widgetValue',
+                        value: {},
+                        componentName: melon.widget.name,
+                        type: varState.type,
+                        desc: varState.desc
+                    });
                 });
             }
+            if (melon.widget.type === widgetKind.dataEntry.type && !hasValueVar) {
+                // 如果是数据输入型且没有添加，则需要添加$var属性，以便可以将组件的onchange与状态值关联起来
+                const uuid = uuidv4();
+                melon.varList.push({ uuid, type: 'value' });
+                state.varList.push({
+                    uuid,
+                    kind: 'widgetValue',
+                    value: {},
+                    componentName: melon.widget.name,
+                    type: varType.value.type,
+                    desc: varType.value.desc
+                });
+            }
+            // 注入setValue
+            melon.widget.props.setValue = (value, tarVarType) => {
+                // 根据type找到uuid
+                let targetUUID;
+                melon.varList.forEach(varItem => {
+                    if (varItem.type === tarVarType) {
+                        targetUUID = varItem.uuid;
+                    }
+                });
+                state.varList.forEach(varItem => {
+                    if (varItem.uuid === targetUUID) {
+                        varItem.value = { ...value };
+                    }
+                });
+            };
             if (type === 'canvas') {
                 state.widgetTree.push(melon);
             } else if (type === 'widget') {
@@ -66,7 +106,13 @@ export const counterSlice = createSlice({
             visitVTree(state.widgetTree, (node, index, list) => {
                 if (node.uuid === action.payload.uuid) {
                     // 清理变量
-                    state.varList = state.varList.filter(varItem => varItem.uuid !== node.$var);
+                    if (node.varList?.length) {
+                        const varSet = {};
+                        node.varList.forEach(item => {
+                            varSet[item.uuid] = true;
+                        });
+                        state.varList = state.varList.filter(varItem => !varSet[varItem.uuid]);
+                    }
                     // 清理组件
                     deleteArray(list, index);
                     return true;
