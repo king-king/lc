@@ -5,10 +5,11 @@ import './style.scss';
 import icon from '../../image/radio.svg';
 import { widgetKind } from '../../../../config';
 
-function ProRadio({ data }) {
+function ProRadio({ data, setValue }) {
+    const onChange = e => setValue({ value: e.target.value }, 'value');
     return (
-        <Radio.Group>
-            {data.map(item => <Radio value={item.value}>{item.label}</Radio>)}
+        <Radio.Group onChange={onChange}>
+            {data.map(item => <Radio key={item.value} value={item.value}>{item.label}</Radio>)}
         </Radio.Group>
     );
 }
