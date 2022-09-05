@@ -3,12 +3,13 @@
  * Copyright (c) 2022
  */
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { widgetSet } from '../../../../widget/Material';
 import DomGetter from '../component/DomGetter';
 import { setVar } from '../../../../redux/slice/vtree';
 
 export const useRenderCanvasContent = () => {
+    const dispatch = useDispatch();
     const vtree = useSelector(state => state.vtree.widgetTree);
     const render = nodes => nodes.map(({
         x, y, uuid, widget, ...other
@@ -18,7 +19,7 @@ export const useRenderCanvasContent = () => {
             x,
             y,
             ...widget.props,
-            setValue: (value, type) => { setVar({ uuid, value, type }); }
+            setValue: (value, type) => { dispatch(setVar({ uuid, value, type })); }
         };
         const onReady = dom => {
             dom.setAttribute('data-lc-widget-uuid', uuid);

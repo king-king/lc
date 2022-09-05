@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, current } from '@reduxjs/toolkit';
 import { widgetKind, varType } from '../../config';
 import { visitVTree, insertArray, deleteArray } from '../../tools/visit';
 
@@ -168,6 +168,7 @@ export const counterSlice = createSlice({
                     varItem.value = { ...value };
                 }
             });
+            console.log(current(state.varList));
         }
     }
 });
